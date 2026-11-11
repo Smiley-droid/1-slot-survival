@@ -1,53 +1,180 @@
 # 1 SLOT SURVIVAL
 
-Un seul slot utilisable : le **premier de la barre rapide**. Les 35 autres slots sont remplis de barrières
-« SLOT BLOQUÉ ». Tout objet déposé dans un slot bloqué est éjecté au sol (jamais supprimé, jamais dupliqué)
-et la barrière revient.
+> Un seul slot utilisable. Tout le reste est bloqué.
 
-Disponible en **mod Fabric** et en **plugin Paper**. Téléchargement : onglet [Releases](../../releases).
+Dans **1 SLOT SURVIVAL**, tu ne peux utiliser que le **premier slot de ta barre rapide**. Les 35 autres
+emplacements de l'inventaire sont remplis de barrières **« SLOT BLOQUÉ »** impossibles à utiliser.
+Si un objet atterrit dans un slot bloqué (ramassage, craft, glisser-déposer, commande…), il est
+**éjecté au sol** devant toi : il n'est jamais supprimé ni dupliqué, et la barrière revient.
 
-| Version | Minecraft | Prérequis |
-|---------|-----------|-----------|
-| Mod Fabric | 1.21.11 → 26.x | Fabric Loader + **Fabric API** (Java 21 pour 1.21.11, Java 25 pour 26.x) |
-| Plugin Paper | 1.21.11 → 26.x | Paper (Java 21 pour 1.21.11, Java 25 pour 26.x) |
+Disponible en deux versions :
+
+| Version | Pour | Minecraft | Prérequis |
+|---------|------|-----------|-----------|
+| **Mod Fabric** | Solo et serveurs Fabric | 1.21.11 → 26.x | Fabric Loader + **Fabric API** |
+| **Plugin Paper** | Serveurs Paper | 1.21.11 → 26.x | Paper |
+
+Java : **21** pour Minecraft 1.21.11, **25** pour Minecraft 26.x.
+
+## Téléchargement
+
+Les fichiers `.jar` sont dans l'onglet **[Releases](../../releases)** :
+
+- `1-slot-survival-fabric-<version>.jar` : mod Fabric
+- `1-slot-survival-paper-<version>.jar` : plugin Paper
+
+Ils sont compilés automatiquement par GitHub Actions à chaque nouvelle version.
 
 ## Installation
 
-- **Fabric** : mettre `1-slot-survival-fabric-*.jar` et Fabric API dans le dossier `mods/` (serveur ou solo).
-- **Paper** : mettre `1-slot-survival-paper-*.jar` dans le dossier `plugins/` puis redémarrer.
+### Mod Fabric
+1. Installe [Fabric Loader](https://fabricmc.net/use/) pour ta version de Minecraft.
+2. Mets **Fabric API** et `1-slot-survival-fabric-*.jar` dans le dossier `mods/`
+   (du client en solo, ou du serveur en multijoueur).
+3. Lance le jeu : le système est actif dès l'entrée dans le monde.
+
+Seul le serveur (ou le solo) a besoin du mod : les joueurs n'ont rien à installer côté client.
+
+### Plugin Paper
+1. Mets `1-slot-survival-paper-*.jar` dans le dossier `plugins/` du serveur.
+2. Redémarre le serveur (pas de `/reload`).
+3. Le réglage se trouve dans `plugins/SlotSurvival/config.yml`.
 
 ## Commandes
 
-**Fabric** (opérateur) :
+### Plugin Paper : `/slotsurvival`
+
+Alias : `/slotsurv`, `/1slot`. Permission : `slotsurvival.admin` (opérateurs par défaut).
 
 | Commande | Effet |
 |----------|-------|
-| `/function slot_lock:admin/enable` / `pause` | Active / met en pause |
-| `/function slot_lock:admin/offhand_on` / `offhand_off` | Bloque / libère la main secondaire |
-| `/function slot_lock:admin/status` | Compte les barrières dans ton inventaire |
-| `/function slot_lock:admin/uninstall` | Retire les barrières avant de supprimer le mod |
+| `/slotsurvival enable` | Active le système |
+| `/slotsurvival pause` | Met en pause et retire les barrières des joueurs connectés |
+| `/slotsurvival offhand on` | Bloque aussi la main secondaire |
+| `/slotsurvival offhand off` | Libère la main secondaire (défaut) |
+| `/slotsurvival status` | Affiche l'état du système et le nombre de barrières dans ton inventaire |
+| `/slotsurvival uninstall` | Désactive le système et retire toutes les barrières, avant de supprimer le plugin |
 
-Exempter un joueur : `/tag <joueur> add sl_exempt`.
+| Permission | Effet | Défaut |
+|------------|-------|--------|
+| `slotsurvival.admin` | Utiliser `/slotsurvival` | op |
+| `slotsurvival.exempt` | Exempter un joueur du blocage (ses barrières sont retirées) | personne |
 
-**Paper** (`/slotsurvival`, alias `/1slot`, permission `slotsurvival.admin`) :
+Configuration (`config.yml`), modifiée aussi par les commandes ci-dessus :
 
-`enable`, `pause`, `offhand on|off`, `status`, `uninstall`.
-Exempter un joueur : permission `slotsurvival.exempt`.
+```yaml
+enabled: true         # système actif
+block-offhand: false  # bloquer la main secondaire
+```
 
-## Comment c'est fait
+### Mod Fabric : fonctions `slot_lock`
 
-- `fabric/` : le mod embarque sa logique sous forme de données (`data/`, fonctions et advancement) que Fabric API
-  charge automatiquement. Aucun code Java dépendant d'une version de Minecraft : un seul jar pour 1.21.11 → 26.x.
-  Le format des composants d'objets est celui de 1.21.5+ (SNBT, `tooltip_display`) et la main secondaire est lue
-  dans `equipment.offhand`.
-- `paper/` : plugin Java (Maven), compilé contre l'API Paper 1.21.11 avec Java 21, sans NMS, donc compatible 26.x.
-- `.github/workflows/build.yml` : compile les deux jars et publie une release quand un tag `v*` est poussé.
+Toutes les commandes demandent d'être **opérateur** (niveau 2).
 
-## Compiler soi-même
+| Commande | Effet |
+|----------|-------|
+| `/function slot_lock:admin/enable` | Active le système |
+| `/function slot_lock:admin/pause` | Met en pause (les barrières déjà présentes restent) |
+| `/function slot_lock:admin/offhand_on` | Bloque aussi la main secondaire |
+| `/function slot_lock:admin/offhand_off` | Libère la main secondaire (défaut) |
+| `/function slot_lock:admin/status` | Compte les barrières dans ton inventaire (35 attendues, 36 avec la main secondaire) |
+| `/function slot_lock:admin/uninstall` | Désactive le système et retire toutes les barrières, avant de supprimer le mod |
+
+Exempter un joueur :
+
+```mcfunction
+/tag <joueur> add sl_exempt
+/clear <joueur> minecraft:barrier[minecraft:custom_data~{slot_lock:1b}]
+```
+
+La deuxième commande retire les barrières qu'il avait déjà. Pour annuler : `/tag <joueur> remove sl_exempt`.
+
+## Fonctionnement et règles
+
+- **Slot libre** : le premier slot de la barre rapide. Les 8 autres de la barre et les 27 de l'inventaire sont bloqués.
+- **Éjection sûre** : un objet dans un slot bloqué est déposé au sol avec un petit délai de ramassage
+  (2,5 s). Si l'éjection échoue, l'objet reste chez le joueur.
+- **Vérification** : à chaque changement d'inventaire, et toutes les 0,5 s par sécurité.
+- **Barrières** : elles ne peuvent pas être jetées, posées (ni en bloc) ni gardées après la mort.
+  Une barrière tombée au sol est supprimée. Les objets des joueurs ne sont jamais supprimés.
+- **Armures** : non concernées, elles se portent normalement.
+- **Main secondaire** : libre par défaut, bloquable avec `offhand on`.
+- **Créatif** : le blocage s'applique aussi. **Spectateur** : ignoré.
+- **Nouveaux joueurs** : un message d'explication leur est envoyé à leur première connexion.
+
+### Différences entre les deux versions
+
+| | Mod Fabric | Plugin Paper |
+|---|---|---|
+| Clic sur une barrière | Détecté puis corrigé en moins d'une demi-seconde | **Bloqué directement** |
+| `pause` | Les barrières restent dans les inventaires | Les barrières sont retirées automatiquement |
+| Joueur exempté | Barrières à retirer avec `/clear` | Retirées automatiquement |
+| Réglages | Scoreboard du monde | `config.yml` |
+
+## Tester rapidement
+
+Avec le mod Fabric (en opérateur) :
+
+| Commande | Résultat attendu |
+|----------|------------------|
+| `/function slot_lock:test/slot0` | 16 émeraudes dans le slot 1 : elles **restent** |
+| `/function slot_lock:test/diamond` | Des diamants dans un slot bloqué : ils sont **éjectés** et la barrière revient |
+| `/function slot_lock:test/many` | Plusieurs objets dans plusieurs slots bloqués : tous éjectés |
+
+Sur Paper, la même vérification se fait avec la commande vanilla :
+
+```mcfunction
+/item replace entity @s inventory.13 with minecraft:diamond 64
+```
+
+## Désinstaller proprement
+
+1. Lance la commande **uninstall** (`/slotsurvival uninstall` ou `/function slot_lock:admin/uninstall`)
+   **pendant que les joueurs sont connectés** : leurs barrières sont retirées.
+2. Supprime ensuite le `.jar`.
+
+Un joueur déconnecté pendant l'opération garde ses barrières. Il peut les retirer avec
+`/clear @s minecraft:barrier[minecraft:custom_data~{slot_lock:1b}]` à sa reconnexion
+(sur Paper, elles sont retirées automatiquement s'il se reconnecte alors que le système est désactivé).
+
+## Dépannage
+
+| Problème | Solution |
+|----------|----------|
+| Le mod Fabric ne se charge pas | Vérifie que **Fabric API** est dans `mods/` et que ta version de Minecraft est ≥ 1.21.11. |
+| `Unknown function slot_lock:…` | Le mod n'est pas chargé : regarde les logs de démarrage. |
+| Le plugin Paper ne se charge pas | Vérifie la version de Java (21 pour 1.21.11, 25 pour 26.x) et les logs du serveur. |
+| Un joueur n'est pas bloqué | Il est peut-être exempté (tag `sl_exempt` / permission `slotsurvival.exempt`), en spectateur, ou le système est en pause. |
+| Les barrières restent après `pause` (Fabric) | Normal : utilise `uninstall` ou `/clear`. |
+
+## Pour les développeurs
+
+```
+fabric/src/            mod Fabric : fabric.mod.json + data/ (fonctions et advancement chargés par Fabric API)
+paper/                 plugin Paper : projet Maven (Java 21, API Paper 1.21.11, sans NMS)
+.github/workflows/     compilation des deux jars + création de la release sur tag v*
+```
+
+- **Fabric** : le mod embarque sa logique sous forme de données. Aucun code dépendant d'une version de
+  Minecraft, donc un seul jar pour 1.21.11 → 26.x. Format des composants d'objets de 1.21.5+
+  (SNBT, `tooltip_display`) ; la main secondaire est lue dans `equipment.offhand`.
+- **Paper** : compilé contre l'API la plus ancienne supportée (1.21.11), donc compatible avec les versions suivantes.
+
+Compiler soi-même :
 
 ```bash
 # Fabric
 (cd fabric/src && zip -r ../../1-slot-survival-fabric.jar .)
-# Paper
-mvn -f paper/pom.xml package
+
+# Paper (Java 21 + Maven)
+mvn -f paper/pom.xml package        # jar dans paper/target/
 ```
+
+Publier une version : modifier le numéro de version (`fabric/src/fabric.mod.json` et `paper/pom.xml`),
+puis pousser un tag :
+
+```bash
+git tag v2.0.1 && git push origin v2.0.1
+```
+
+GitHub Actions compile les jars et crée la release.
