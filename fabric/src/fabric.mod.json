@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "slot_survival",
+  "version": "2.0.0",
+  "name": "1 SLOT SURVIVAL",
+  "description": "Un seul slot utilisable (le premier de la barre rapide). Les autres slots sont bloqués par des barrières ; les objets déposés dedans sont éjectés au sol, jamais perdus.",
+  "authors": ["Smiley-droid"],
+  "contact": {
+    "homepage": "https://github.com/Smiley-droid/1-slot-survival",
+    "sources": "https://github.com/Smiley-droid/1-slot-survival"
+  },
+  "environment": "*",
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": ">=1.21.11",
+    "fabric-api": "*"
+  }
+}

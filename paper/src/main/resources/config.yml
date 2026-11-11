@@ -1,0 +1,4 @@
+# Système actif (modifiable avec /slotsurvival enable | pause)
+enabled: true
+# Bloquer aussi la main secondaire (modifiable avec /slotsurvival offhand on | off)
+block-offhand: false

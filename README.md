@@ -1,47 +1,53 @@
 # 1 SLOT SURVIVAL
 
-Datapack Minecraft Java : **un seul slot utilisable** (le premier de la barre rapide).
-Les 35 autres slots sont remplis de barrières « SLOT BLOQUÉ ». Tout objet déposé dans un slot
-bloqué est éjecté au sol (jamais supprimé, jamais dupliqué) et la barrière revient.
+Un seul slot utilisable : le **premier de la barre rapide**. Les 35 autres slots sont remplis de barrières
+« SLOT BLOQUÉ ». Tout objet déposé dans un slot bloqué est éjecté au sol (jamais supprimé, jamais dupliqué)
+et la barrière revient.
 
-## Versions supportées
+Disponible en **mod Fabric** et en **plugin Paper**. Téléchargement : onglet [Releases](../../releases).
 
-| Minecraft | Data pack format |
-|-----------|------------------|
-| 1.21.11   | 94.1             |
-| 26.1.x    | 101.1            |
-| 26.2      | 107.1            |
-| 26.3      | 121.0            |
-
-`pack.mcmeta` déclare `min_format: [94, 1]` et `max_format: 121`.
-Les versions 1.21.9 / 1.21.10 et antérieures ne sont **pas** supportées (syntaxe des composants différente).
+| Version | Minecraft | Prérequis |
+|---------|-----------|-----------|
+| Mod Fabric | 1.21.11 → 26.x | Fabric Loader + **Fabric API** (Java 21 pour 1.21.11, Java 25 pour 26.x) |
+| Plugin Paper | 1.21.11 → 26.x | Paper (Java 21 pour 1.21.11, Java 25 pour 26.x) |
 
 ## Installation
 
-1. Télécharger le dépôt en ZIP (ou le dossier du pack) et le placer dans `<monde>/datapacks/`
-   (le `pack.mcmeta` doit être à la racine du ZIP / du dossier).
-2. `/reload` ou relancer le monde.
+- **Fabric** : mettre `1-slot-survival-fabric-*.jar` et Fabric API dans le dossier `mods/` (serveur ou solo).
+- **Paper** : mettre `1-slot-survival-paper-*.jar` dans le dossier `plugins/` puis redémarrer.
 
-## Commandes admin
+## Commandes
+
+**Fabric** (opérateur) :
 
 | Commande | Effet |
 |----------|-------|
-| `/function slot_lock:admin/enable` | Active le système |
-| `/function slot_lock:admin/pause` | Met en pause |
+| `/function slot_lock:admin/enable` / `pause` | Active / met en pause |
 | `/function slot_lock:admin/offhand_on` / `offhand_off` | Bloque / libère la main secondaire |
 | `/function slot_lock:admin/status` | Compte les barrières dans ton inventaire |
-| `/function slot_lock:admin/uninstall` | Retire toutes les barrières avant de désactiver le pack |
+| `/function slot_lock:admin/uninstall` | Retire les barrières avant de supprimer le mod |
 
-Pour exempter un joueur : `/tag <joueur> add sl_exempt`.
+Exempter un joueur : `/tag <joueur> add sl_exempt`.
 
-## Changements par rapport à la version 1.21.1
+**Paper** (`/slotsurvival`, alias `/1slot`, permission `slotsurvival.admin`) :
 
-- `pack.mcmeta` : `pack_format` → `min_format` / `max_format`.
-- Composants de la barrière au format 1.21.5+ : `custom_name` / `lore` en SNBT,
-  `enchantments` simplifié, `tooltip_display` à la place de `show_in_tooltip`.
-- Main secondaire lue dans `equipment.offhand` (n'est plus dans `Inventory` depuis 1.21.5).
-- Les macros `fix` / `eject` utilisent désormais un chemin NBT (`path`) au lieu d'un index de slot.
+`enable`, `pause`, `offhand on|off`, `status`, `uninstall`.
+Exempter un joueur : permission `slotsurvival.exempt`.
 
-## Tests rapides (en jeu)
+## Comment c'est fait
 
-`/function slot_lock:test/slot0`, `test/diamond`, `test/many`.
+- `fabric/` : le mod embarque sa logique sous forme de données (`data/`, fonctions et advancement) que Fabric API
+  charge automatiquement. Aucun code Java dépendant d'une version de Minecraft : un seul jar pour 1.21.11 → 26.x.
+  Le format des composants d'objets est celui de 1.21.5+ (SNBT, `tooltip_display`) et la main secondaire est lue
+  dans `equipment.offhand`.
+- `paper/` : plugin Java (Maven), compilé contre l'API Paper 1.21.11 avec Java 21, sans NMS, donc compatible 26.x.
+- `.github/workflows/build.yml` : compile les deux jars et publie une release quand un tag `v*` est poussé.
+
+## Compiler soi-même
+
+```bash
+# Fabric
+(cd fabric/src && zip -r ../../1-slot-survival-fabric.jar .)
+# Paper
+mvn -f paper/pom.xml package
+```

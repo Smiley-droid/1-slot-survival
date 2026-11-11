@@ -1,0 +1,64 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fabric:
+    name: Mod Fabric
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Construire le jar
+        run: |
+          VERSION=$(python3 -c "import json;print(json.load(open('fabric/src/fabric.mod.json'))['version'])")
+          mkdir -p dist
+          (cd fabric/src && zip -q -r "../../dist/1-slot-survival-fabric-${VERSION}.jar" .)
+          unzip -l dist/*.jar | tail -n 5
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fabric
+          path: dist/*.jar
+
+  paper:
+    name: Plugin Paper
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Compiler
+        run: mvn -B -q -f paper/pom.xml package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper
+          path: paper/target/1-slot-survival-paper-*.jar
+
+  release:
+    name: Release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [fabric, paper]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Publier la release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" artifacts/*.jar \
+            --repo "${GITHUB_REPOSITORY}" \
+            --title "1 SLOT SURVIVAL ${GITHUB_REF_NAME}" \
+            --notes "Mod Fabric (1.21.11 à 26.x, nécessite Fabric API) et plugin Paper (1.21.11 à 26.x)."

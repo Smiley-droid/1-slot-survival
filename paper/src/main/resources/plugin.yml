@@ -1,0 +1,19 @@
+name: SlotSurvival
+version: '${project.version}'
+main: io.github.smileydroid.slotsurvival.SlotSurvival
+api-version: '1.21.11'
+author: Smiley-droid
+description: 1 SLOT SURVIVAL - un seul slot utilisable (le premier de la barre rapide).
+commands:
+  slotsurvival:
+    description: Administration de 1 SLOT SURVIVAL
+    usage: /<command> <enable|pause|offhand|status|uninstall>
+    aliases: [slotsurv, 1slot]
+    permission: slotsurvival.admin
+permissions:
+  slotsurvival.admin:
+    description: Utiliser /slotsurvival
+    default: op
+  slotsurvival.exempt:
+    description: Exempte le joueur du blocage de slots
+    default: false
