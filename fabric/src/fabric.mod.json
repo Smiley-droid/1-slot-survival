@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "slot_survival",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "name": "1 SLOT SURVIVAL",
   "description": "Un seul slot utilisable (le premier de la barre rapide). Les autres slots sont bloqués par des barrières ; les objets déposés dedans sont éjectés au sol, jamais perdus.",
   "authors": ["Smiley-droid"],

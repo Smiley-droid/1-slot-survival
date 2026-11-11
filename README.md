@@ -23,7 +23,7 @@ Les fichiers `.jar` sont dans l'onglet **[Releases](../../releases)** :
 - `1-slot-survival-fabric-<version>.jar` : mod Fabric
 - `1-slot-survival-paper-<version>.jar` : plugin Paper
 
-Ils sont compilés automatiquement par GitHub Actions à chaque nouvelle version.
+Ils sont compilés automatiquement par GitHub Actions à chaque nouvelle version, et testés sur de vrais serveurs **Paper 26.3** et **Fabric 26.3** (chargement, commandes, éjection d'objets).
 
 ## Installation
 
@@ -54,6 +54,7 @@ Alias : `/slotsurv`, `/1slot`. Permission : `slotsurvival.admin` (opérateurs pa
 | `/slotsurvival offhand off` | Libère la main secondaire (défaut) |
 | `/slotsurvival status` | Affiche l'état du système et le nombre de barrières dans ton inventaire |
 | `/slotsurvival uninstall` | Désactive le système et retire toutes les barrières, avant de supprimer le plugin |
+| `/slotsurvival selftest` | Diagnostic : vérifie que les API utilisées fonctionnent sur ton serveur (affiche `PASS`/`FAIL`) |
 
 | Permission | Effet | Défaut |
 |------------|-------|--------|
@@ -138,6 +139,15 @@ Un joueur déconnecté pendant l'opération garde ses barrières. Il peut les re
 (sur Paper, elles sont retirées automatiquement s'il se reconnecte alors que le système est désactivé).
 
 ## Dépannage
+
+**Les commandes ne répondent pas ?** Vérifie d'abord ces points :
+
+1. **Tu es opérateur ?** Paper : `/op <pseudo>` depuis la console. Fabric : les `/function` demandent le niveau 2.
+2. **Fabric en solo** : crée le monde avec **« Autoriser les commandes : oui »** (ou « Ouvrir au réseau local » avec les triches activées). Sans ça, `/function` n'existe pas.
+3. **Fabric n'a pas de commande `/slotsurvival`** : ses commandes sont les `/function slot_lock:admin/...` du tableau ci-dessus. `/slotsurvival` n'existe que sur **Paper**.
+4. **Paper** : tape `/slotsurvival` seul, il affiche l'aide et l'état. Puis `/slotsurvival selftest` et envoie-moi les lignes `PASS`/`FAIL` en cas de problème.
+5. Regarde les logs au démarrage (`logs/latest.log`) : cherche `SlotSurvival` (Paper) ou `slot_survival` (Fabric).
+
 
 | Problème | Solution |
 |----------|----------|
