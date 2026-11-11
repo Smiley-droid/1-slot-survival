@@ -311,6 +311,16 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
         sender.sendMessage(PREFIX.append(Component.text(text, color).decoration(TextDecoration.BOLD, false)));
     }
 
+    /** Informe tous les joueurs connectés, et l'émetteur s'il n'est pas un joueur (console). */
+    private void announce(CommandSender sender, String text, NamedTextColor color) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            reply(player, text, color);
+        }
+        if (!(sender instanceof Player)) {
+            reply(sender, text, color);
+        }
+    }
+
     private void changeEnabled(boolean value) {
         enabled = value;
         getConfig().set("enabled", value);
@@ -332,26 +342,28 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            return false;
+            reply(sender, "Utilisation : /" + label + " <enable|pause|offhand on|off|status|uninstall|selftest>", NamedTextColor.YELLOW);
+            reply(sender, "Système : " + (enabled ? "activé" : "en pause")
+                    + " | main secondaire : " + (blockOffhand ? "bloquée" : "libre"), NamedTextColor.GRAY);
+            return true;
         }
         switch (args[0].toLowerCase()) {
             case "enable" -> {
                 changeEnabled(true);
-                reply(Bukkit.getConsoleSender(), "Système activé.", NamedTextColor.GREEN);
-                Bukkit.getOnlinePlayers().forEach(p -> reply(p, "Système activé.", NamedTextColor.GREEN));
+                announce(sender, "Système activé.", NamedTextColor.GREEN);
             }
             case "pause" -> {
                 changeEnabled(false);
-                Bukkit.getOnlinePlayers().forEach(p -> reply(p, "Système en pause.", NamedTextColor.RED));
+                announce(sender, "Système en pause.", NamedTextColor.RED);
             }
             case "offhand" -> {
                 if (args.length < 2 || !(args[1].equalsIgnoreCase("on") || args[1].equalsIgnoreCase("off"))) {
-                    return false;
+                    reply(sender, "Utilisation : /" + label + " offhand <on|off>", NamedTextColor.YELLOW);
+                    return true;
                 }
                 boolean on = args[1].equalsIgnoreCase("on");
                 setBlockOffhand(on);
-                String text = on ? "Main secondaire bloquée." : "Main secondaire libre.";
-                Bukkit.getOnlinePlayers().forEach(p -> reply(p, text, NamedTextColor.YELLOW));
+                announce(sender, on ? "Main secondaire bloquée." : "Main secondaire libre.", NamedTextColor.YELLOW);
             }
             case "status" -> {
                 reply(sender, "Système : " + (enabled ? "activé" : "en pause")
@@ -363,21 +375,56 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
             }
             case "uninstall" -> {
                 changeEnabled(false);
-                Bukkit.getOnlinePlayers().forEach(p -> reply(p,
-                        "Barrières retirées. Tu peux maintenant supprimer le plugin SlotSurvival.", NamedTextColor.YELLOW));
+                announce(sender, "Barrières retirées. Tu peux maintenant supprimer le plugin SlotSurvival.", NamedTextColor.YELLOW);
             }
+            case "selftest" -> selfTest(sender);
             default -> {
-                return false;
+                reply(sender, "Commande inconnue. Utilisation : /" + label
+                        + " <enable|pause|offhand on|off|status|uninstall>", NamedTextColor.RED);
             }
         }
         return true;
+    }
+
+    /** Diagnostic : exerce les API utilisées (objets, messages, action bar, éjection) sans joueur. */
+    private void selfTest(CommandSender sender) {
+        selfCheck(sender, "creation de la barriere", () -> {
+            ItemStack lock = createLock();
+            if (!isLock(lock)) {
+                throw new IllegalStateException("la barriere n'est pas reconnue");
+            }
+        });
+        selfCheck(sender, "message (Component)", () -> reply(sender, "test message", NamedTextColor.GRAY));
+        selfCheck(sender, "action bar", () -> sender.sendActionBar(Component.text("test", NamedTextColor.RED)));
+        selfCheck(sender, "ejection au sol", () -> {
+            org.bukkit.World world = Bukkit.getWorlds().get(0);
+            Item dropped = world.dropItem(world.getSpawnLocation().add(0, 2, 0), new ItemStack(Material.DIAMOND, 3));
+            dropped.setPickupDelay(50);
+            dropped.setVelocity(new Vector(0, 0.2, 0));
+            boolean valid = dropped.isValid();
+            dropped.remove();
+            if (!valid) {
+                throw new IllegalStateException("objet invalide");
+            }
+        });
+        reply(sender, "Version serveur : " + Bukkit.getVersion(), NamedTextColor.GRAY);
+    }
+
+    private void selfCheck(CommandSender sender, String name, Runnable test) {
+        try {
+            test.run();
+            sender.sendMessage(Component.text("[selftest] PASS " + name, NamedTextColor.GREEN));
+        } catch (Throwable error) {
+            sender.sendMessage(Component.text("[selftest] FAIL " + name + " : " + error, NamedTextColor.RED));
+            getLogger().severe("selftest FAIL " + name + " : " + error);
+        }
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> out = new ArrayList<>();
         if (args.length == 1) {
-            for (String s : List.of("enable", "pause", "offhand", "status", "uninstall")) {
+            for (String s : List.of("enable", "pause", "offhand", "status", "uninstall", "selftest")) {
                 if (s.startsWith(args[0].toLowerCase())) {
                     out.add(s);
                 }

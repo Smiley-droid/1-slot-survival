@@ -29,12 +29,12 @@ jobs:
           open("srv/paper.jar","wb").write(urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent":"slot-survival-ci"})).read())
           PY
           printf 'online-mode=false\nlevel-type=minecraft\\:flat\nview-distance=2\nsimulation-distance=2\n' > srv/server.properties
-          export CMDS='plugins|slotsurvival status|slotsurvival pause|slotsurvival enable|slotsurvival offhand on|slotsurvival offhand off|help slotsurvival'
+          export CMDS='plugins|slotsurvival|slotsurvival status|slotsurvival selftest|slotsurvival pause|slotsurvival enable|slotsurvival offhand on|slotsurvival offhand off|slotsurvival uninstall'
           ci/run_server.sh srv java -Xmx1G -jar paper.jar --nogui > paper-out.txt 2>&1 || true
           python3 - <<'PY'
           import re
           t = open("paper-out.txt").read()
-          keep = [l for l in t.splitlines() if re.search(r"slotsurvival|SlotSurvival|1 SLOT|ERROR|Exception|Caused|WARN|Unknown|Done \(|Paper|plugins|Could not|NoSuch|Error", l)]
+          keep = [l for l in t.splitlines() if re.search(r"slotsurvival|SlotSurvival|1 SLOT|ERROR|Exception|Caused|WARN|Unknown|Done \(|Paper|plugins|Could not|NoSuch|Error|selftest|PASS|FAIL", l)]
           msg = "\n".join(keep[:60]).replace("%","%25").replace("\r","").replace("\n","%0A")
           print("::error title=PAPER-LOG::" + msg[:6000])
           PY
@@ -64,12 +64,12 @@ jobs:
           print("fabric-api", v["version_number"])
           open("srv/mods/"+f["filename"],"wb").write(get(f["url"]))
           PY
-          export CMDS='function slot_lock:admin/pause|scoreboard players get #enabled sl_cfg|function slot_lock:admin/enable|scoreboard players get #enabled sl_cfg|function slot_lock:admin/offhand_on|scoreboard players get #offhand sl_cfg|function slot_lock:admin/offhand_off|function slot_lock:test/slot0|datapack list'
+          export CMDS='function slot_lock:admin/pause|scoreboard players get #enabled sl_cfg|function slot_lock:admin/enable|scoreboard players get #enabled sl_cfg|summon minecraft:armor_stand 0 100 0 {Tags:["t"],NoGravity:1b}|item replace entity @e[tag=t,limit=1] weapon.mainhand with minecraft:diamond 5|execute as @e[tag=t,limit=1] at @s run function slot_lock:fix {slot:"weapon.mainhand",path:"equipment.mainhand"}|data get entity @e[tag=t,limit=1] equipment.mainhand.id|data get entity @e[tag=t,limit=1] equipment.mainhand.components|data get entity @e[type=item,limit=1] Item.id|data get entity @e[type=item,limit=1] Item.count|item replace entity @e[tag=t,limit=1] weapon.offhand with minecraft:air|execute as @e[tag=t,limit=1] at @s run function slot_lock:fix {slot:"weapon.offhand",path:"equipment.offhand"}|data get entity @e[tag=t,limit=1] equipment.offhand.id|datapack list'
           ci/run_server.sh srv java -Xmx1G -jar fabric.jar nogui > fabric-out.txt 2>&1 || true
           python3 - <<'PY'
           import re
           t = open("fabric-out.txt").read()
-          keep = [l for l in t.splitlines() if re.search(r"slot|Slot|SLOT|ERROR|Exception|Caused|WARN|Unknown|Done \(|mod|Fabric|has \d|function|datapack|Could not|Error", l)]
+          keep = [l for l in t.splitlines() if re.search(r"slot|Slot|SLOT|ERROR|Exception|Caused|WARN|Unknown|Done \(|mod|Fabric|has \d|function|datapack|Could not|Error|System chat", l)]
           msg = "\n".join(keep[:70]).replace("%","%25").replace("\r","").replace("\n","%0A")
           print("::error title=FABRIC-LOG::" + msg[:6000])
           PY
