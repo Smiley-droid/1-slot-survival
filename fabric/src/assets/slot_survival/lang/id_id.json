@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "SLOT TERKUNCI",
+  "slot_survival.barrier.lore": "Slot ini dilarang!",
+  "slot_survival.actionbar.locked": "Slot terkunci! Gunakan slot 1 di hotbar kamu.",
+  "slot_survival.msg.enabled": "Sistem diaktifkan.",
+  "slot_survival.msg.paused": "Sistem dijeda.",
+  "slot_survival.msg.offhand_on": "Tangan kedua terkunci.",
+  "slot_survival.msg.offhand_off": "Tangan kedua bebas.",
+  "slot_survival.msg.uninstall": "Penghalang dihapus. Sekarang kamu bisa menghapus mod 1 SLOT SURVIVAL dari folder mods.",
+  "slot_survival.msg.status": "Penghalang pengunci di inventaris kamu: %s",
+  "slot_survival.msg.status_hint": " (diharapkan 35, atau 36 jika tangan kedua terkunci)",
+  "slot_survival.msg.welcome": "Hanya satu slot yang bisa dipakai: slot pertama di hotbar. Item yang ditaruh di slot terkunci akan dijatuhkan ke tanah, tidak pernah dihapus."
+}

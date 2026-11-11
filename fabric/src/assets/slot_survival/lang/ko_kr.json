@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "잠긴 슬롯",
+  "slot_survival.barrier.lore": "이 슬롯은 사용할 수 없습니다!",
+  "slot_survival.actionbar.locked": "슬롯이 잠겨 있습니다! 핫바의 1번 슬롯을 사용하세요.",
+  "slot_survival.msg.enabled": "시스템이 활성화되었습니다.",
+  "slot_survival.msg.paused": "시스템이 일시 중지되었습니다.",
+  "slot_survival.msg.offhand_on": "보조 손이 잠겼습니다.",
+  "slot_survival.msg.offhand_off": "보조 손이 해제되었습니다.",
+  "slot_survival.msg.uninstall": "방벽이 제거되었습니다. 이제 mods 폴더에서 1 SLOT SURVIVAL 모드를 제거해도 됩니다.",
+  "slot_survival.msg.status": "인벤토리의 잠금 방벽: %s",
+  "slot_survival.msg.status_hint": " (35개 예상, 보조 손이 잠겨 있으면 36개)",
+  "slot_survival.msg.welcome": "사용할 수 있는 슬롯은 핫바의 첫 번째 하나뿐입니다. 잠긴 슬롯에 놓은 아이템은 바닥에 떨어지며 절대 삭제되지 않습니다."
+}

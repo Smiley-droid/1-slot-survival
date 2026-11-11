@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "SLOT BLOQUEADO",
+  "slot_survival.barrier.lore": "¡Este espacio está prohibido!",
+  "slot_survival.actionbar.locked": "¡Espacio bloqueado! Usa la casilla 1 de tu barra rápida.",
+  "slot_survival.msg.enabled": "Sistema activado.",
+  "slot_survival.msg.paused": "Sistema en pausa.",
+  "slot_survival.msg.offhand_on": "Mano secundaria bloqueada.",
+  "slot_survival.msg.offhand_off": "Mano secundaria libre.",
+  "slot_survival.msg.uninstall": "Barreras retiradas. Ya puedes quitar el mod 1 SLOT SURVIVAL de la carpeta mods.",
+  "slot_survival.msg.status": "Barreras de bloqueo en tu inventario: %s",
+  "slot_survival.msg.status_hint": " (35 esperadas, 36 si la mano secundaria está bloqueada)",
+  "slot_survival.msg.welcome": "Solo se puede usar una casilla: la primera de tu barra rápida. Los objetos colocados en una casilla bloqueada se sueltan al suelo, nunca se eliminan."
+}

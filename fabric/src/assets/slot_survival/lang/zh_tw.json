@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "已鎖定的欄位",
+  "slot_survival.barrier.lore": "此欄位已被禁用！",
+  "slot_survival.actionbar.locked": "欄位已鎖定！請使用快捷欄的第 1 格。",
+  "slot_survival.msg.enabled": "系統已啟用。",
+  "slot_survival.msg.paused": "系統已暫停。",
+  "slot_survival.msg.offhand_on": "副手已鎖定。",
+  "slot_survival.msg.offhand_off": "副手已解鎖。",
+  "slot_survival.msg.uninstall": "屏障已移除。現在可以從 mods 資料夾中移除 1 SLOT SURVIVAL 模組了。",
+  "slot_survival.msg.status": "你的物品欄中的鎖定屏障：%s",
+  "slot_survival.msg.status_hint": " （預期 35 個，副手鎖定時為 36 個）",
+  "slot_survival.msg.welcome": "只有一個欄位可用：快捷欄的第一格。放入已鎖定欄位的物品會被丟到地上，絕不會被刪除。"
+}

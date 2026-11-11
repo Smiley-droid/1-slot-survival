@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Vérifier les traductions
+        run: python3 ci/check_lang.py
       - name: Construire le jar
         run: |
           VERSION=$(python3 -c "import json;print(json.load(open('fabric/src/fabric.mod.json'))['version'])")

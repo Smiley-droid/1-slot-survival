@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "GEBLOKKEERD VAK",
+  "slot_survival.barrier.lore": "Dit vak is verboden!",
+  "slot_survival.actionbar.locked": "Geblokkeerd vak! Gebruik vak 1 van je snelbalk.",
+  "slot_survival.msg.enabled": "Systeem ingeschakeld.",
+  "slot_survival.msg.paused": "Systeem gepauzeerd.",
+  "slot_survival.msg.offhand_on": "Tweede hand geblokkeerd.",
+  "slot_survival.msg.offhand_off": "Tweede hand vrij.",
+  "slot_survival.msg.uninstall": "Barrières verwijderd. Je kunt de mod 1 SLOT SURVIVAL nu uit de map mods halen.",
+  "slot_survival.msg.status": "Blokkeerbarrières in je inventaris: %s",
+  "slot_survival.msg.status_hint": " (35 verwacht, 36 als de tweede hand geblokkeerd is)",
+  "slot_survival.msg.welcome": "Er is maar één vak bruikbaar: het eerste van je snelbalk. Voorwerpen in een geblokkeerd vak worden op de grond gegooid, nooit verwijderd."
+}

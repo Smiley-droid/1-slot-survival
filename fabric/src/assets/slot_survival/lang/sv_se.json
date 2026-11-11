@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "LÅST PLATS",
+  "slot_survival.barrier.lore": "Den här platsen är förbjuden!",
+  "slot_survival.actionbar.locked": "Låst plats! Använd plats 1 i snabbfältet.",
+  "slot_survival.msg.enabled": "Systemet är aktiverat.",
+  "slot_survival.msg.paused": "Systemet är pausat.",
+  "slot_survival.msg.offhand_on": "Andra handen låst.",
+  "slot_survival.msg.offhand_off": "Andra handen fri.",
+  "slot_survival.msg.uninstall": "Barriärer borttagna. Nu kan du ta bort modden 1 SLOT SURVIVAL från mods-mappen.",
+  "slot_survival.msg.status": "Låsbarriärer i ditt inventarie: %s",
+  "slot_survival.msg.status_hint": " (35 förväntade, 36 om andra handen är låst)",
+  "slot_survival.msg.welcome": "Bara en plats kan användas: den första i snabbfältet. Föremål i låsta platser släpps på marken och raderas aldrig."
+}

@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "SLOT BLOCCATO",
+  "slot_survival.barrier.lore": "Questo slot è vietato!",
+  "slot_survival.actionbar.locked": "Slot bloccato! Usa lo slot 1 della tua barra rapida.",
+  "slot_survival.msg.enabled": "Sistema attivato.",
+  "slot_survival.msg.paused": "Sistema in pausa.",
+  "slot_survival.msg.offhand_on": "Mano secondaria bloccata.",
+  "slot_survival.msg.offhand_off": "Mano secondaria libera.",
+  "slot_survival.msg.uninstall": "Barriere rimosse. Ora puoi rimuovere la mod 1 SLOT SURVIVAL dalla cartella mods.",
+  "slot_survival.msg.status": "Barriere di blocco nel tuo inventario: %s",
+  "slot_survival.msg.status_hint": " (35 previste, 36 se la mano secondaria è bloccata)",
+  "slot_survival.msg.welcome": "È utilizzabile un solo slot: il primo della barra rapida. Gli oggetti messi in uno slot bloccato vengono lasciati cadere a terra, mai eliminati."
+}

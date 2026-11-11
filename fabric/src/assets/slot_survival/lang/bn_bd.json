@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "লক করা স্লট",
+  "slot_survival.barrier.lore": "এই স্লটটি নিষিদ্ধ!",
+  "slot_survival.actionbar.locked": "স্লট লক করা! তোমার হটবারের স্লট ১ ব্যবহার করো।",
+  "slot_survival.msg.enabled": "সিস্টেম চালু হয়েছে।",
+  "slot_survival.msg.paused": "সিস্টেম বিরতিতে আছে।",
+  "slot_survival.msg.offhand_on": "দ্বিতীয় হাত লক করা হয়েছে।",
+  "slot_survival.msg.offhand_off": "দ্বিতীয় হাত মুক্ত।",
+  "slot_survival.msg.uninstall": "ব্যারিয়ার সরানো হয়েছে। এখন তুমি mods ফোল্ডার থেকে 1 SLOT SURVIVAL মড সরাতে পারো।",
+  "slot_survival.msg.status": "তোমার ইনভেন্টরিতে লক ব্যারিয়ার: %s",
+  "slot_survival.msg.status_hint": " (৩৫ প্রত্যাশিত, দ্বিতীয় হাত লক থাকলে ৩৬)",
+  "slot_survival.msg.welcome": "শুধু একটি স্লট ব্যবহারযোগ্য: হটবারের প্রথমটি। লক করা স্লটে রাখা আইটেম মাটিতে ফেলে দেওয়া হয়, কখনো মুছে ফেলা হয় না।"
+}

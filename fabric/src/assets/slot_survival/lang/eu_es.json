@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "BLOKEATUTAKO HUTSUNEA",
+  "slot_survival.barrier.lore": "Hutsune hau debekatuta dago!",
+  "slot_survival.actionbar.locked": "Hutsunea blokeatuta! Erabili zure barra azkarreko 1. hutsunea.",
+  "slot_survival.msg.enabled": "Sistema aktibatu da.",
+  "slot_survival.msg.paused": "Sistema pausatu da.",
+  "slot_survival.msg.offhand_on": "Bigarren eskua blokeatuta.",
+  "slot_survival.msg.offhand_off": "Bigarren eskua libre.",
+  "slot_survival.msg.uninstall": "Hesiak kendu dira. Orain mods karpetatik 1 SLOT SURVIVAL mod-a kendu dezakezu.",
+  "slot_survival.msg.status": "Zure inbentarioko blokeo-hesiak: %s",
+  "slot_survival.msg.status_hint": " (35 espero dira, 36 bigarren eskua blokeatuta badago)",
+  "slot_survival.msg.welcome": "Hutsune bakarra erabil daiteke: barra azkarreko lehena. Blokeatutako hutsuneetan jarritako objektuak lurrera erortzen dira, inoiz ez dira ezabatzen."
+}

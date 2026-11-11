@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "LUKITTU PAIKKA",
+  "slot_survival.barrier.lore": "Tämä paikka on kielletty!",
+  "slot_survival.actionbar.locked": "Lukittu paikka! Käytä pikavalikon paikkaa 1.",
+  "slot_survival.msg.enabled": "Järjestelmä käytössä.",
+  "slot_survival.msg.paused": "Järjestelmä tauolla.",
+  "slot_survival.msg.offhand_on": "Toinen käsi lukittu.",
+  "slot_survival.msg.offhand_off": "Toinen käsi vapaa.",
+  "slot_survival.msg.uninstall": "Esteet poistettu. Voit nyt poistaa 1 SLOT SURVIVAL -modin mods-kansiosta.",
+  "slot_survival.msg.status": "Lukitusesteitä reppusi sisällössä: %s",
+  "slot_survival.msg.status_hint": " (odotetaan 35, tai 36, jos toinen käsi on lukittu)",
+  "slot_survival.msg.welcome": "Vain yksi paikka on käytettävissä: pikavalikon ensimmäinen. Lukittuihin paikkoihin laitetut esineet pudotetaan maahan, niitä ei koskaan poisteta."
+}

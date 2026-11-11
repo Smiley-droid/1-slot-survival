@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "KİLİTLİ SLOT",
+  "slot_survival.barrier.lore": "Bu slot yasak!",
+  "slot_survival.actionbar.locked": "Kilitli slot! Hızlı çubuğunun 1. slotunu kullan.",
+  "slot_survival.msg.enabled": "Sistem etkinleştirildi.",
+  "slot_survival.msg.paused": "Sistem duraklatıldı.",
+  "slot_survival.msg.offhand_on": "İkinci el kilitlendi.",
+  "slot_survival.msg.offhand_off": "İkinci el serbest.",
+  "slot_survival.msg.uninstall": "Bariyerler kaldırıldı. Artık 1 SLOT SURVIVAL modunu mods klasöründen kaldırabilirsin.",
+  "slot_survival.msg.status": "Envanterindeki kilit bariyerleri: %s",
+  "slot_survival.msg.status_hint": " (35 bekleniyor, ikinci el kilitliyse 36)",
+  "slot_survival.msg.welcome": "Yalnızca tek bir slot kullanılabilir: hızlı çubuğun ilk slotu. Kilitli slotlara konan eşyalar yere atılır, asla silinmez."
+}

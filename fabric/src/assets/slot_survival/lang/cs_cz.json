@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ZABLOKOVANÝ SLOT",
+  "slot_survival.barrier.lore": "Tento slot je zakázaný!",
+  "slot_survival.actionbar.locked": "Zablokovaný slot! Používej slot 1 své lišty předmětů.",
+  "slot_survival.msg.enabled": "Systém zapnut.",
+  "slot_survival.msg.paused": "Systém pozastaven.",
+  "slot_survival.msg.offhand_on": "Druhá ruka zablokována.",
+  "slot_survival.msg.offhand_off": "Druhá ruka volná.",
+  "slot_survival.msg.uninstall": "Bariéry odstraněny. Nyní můžeš mód 1 SLOT SURVIVAL odebrat ze složky mods.",
+  "slot_survival.msg.status": "Blokovacích bariér v inventáři: %s",
+  "slot_survival.msg.status_hint": " (očekáváno 35, nebo 36, pokud je druhá ruka zablokována)",
+  "slot_survival.msg.welcome": "Použitelný je jen jeden slot: první na liště předmětů. Předměty v zablokovaných slotech se vyhodí na zem a nikdy se nesmažou."
+}

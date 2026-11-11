@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ZAKLJUČANO MJESTO",
+  "slot_survival.barrier.lore": "Ovo mjesto je zabranjeno!",
+  "slot_survival.actionbar.locked": "Zaključano mjesto! Koristi mjesto 1 svoje trake za brzi pristup.",
+  "slot_survival.msg.enabled": "Sustav uključen.",
+  "slot_survival.msg.paused": "Sustav pauziran.",
+  "slot_survival.msg.offhand_on": "Druga ruka zaključana.",
+  "slot_survival.msg.offhand_off": "Druga ruka slobodna.",
+  "slot_survival.msg.uninstall": "Barijere uklonjene. Sada možeš ukloniti mod 1 SLOT SURVIVAL iz mape mods.",
+  "slot_survival.msg.status": "Blokirajućih barijera u inventaru: %s",
+  "slot_survival.msg.status_hint": " (očekuje se 35, ili 36 ako je druga ruka zaključana)",
+  "slot_survival.msg.welcome": "Upotrebljivo je samo jedno mjesto: prvo na traci za brzi pristup. Predmeti u zaključanim mjestima bacaju se na tlo i nikad se ne brišu."
+}

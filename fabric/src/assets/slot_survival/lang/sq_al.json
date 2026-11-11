@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "VEND I BLLOKUAR",
+  "slot_survival.barrier.lore": "Ky vend është i ndaluar!",
+  "slot_survival.actionbar.locked": "Vend i bllokuar! Përdor vendin 1 të shiritit të shpejtë.",
+  "slot_survival.msg.enabled": "Sistemi u aktivizua.",
+  "slot_survival.msg.paused": "Sistemi u pezullua.",
+  "slot_survival.msg.offhand_on": "Dora e dytë u bllokua.",
+  "slot_survival.msg.offhand_off": "Dora e dytë është e lirë.",
+  "slot_survival.msg.uninstall": "Pengesat u hoqën. Tani mund ta heqësh modin 1 SLOT SURVIVAL nga dosja mods.",
+  "slot_survival.msg.status": "Pengesa bllokimi në inventarin tënd: %s",
+  "slot_survival.msg.status_hint": " (priten 35, ose 36 nëse dora e dytë është e bllokuar)",
+  "slot_survival.msg.welcome": "Vetëm një vend mund të përdoret: i pari në shiritin e shpejtë. Sendet e vendosura në vende të bllokuara hidhen në tokë dhe nuk fshihen kurrë."
+}

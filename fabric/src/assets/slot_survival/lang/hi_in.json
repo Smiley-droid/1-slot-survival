@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "लॉक किया गया स्लॉट",
+  "slot_survival.barrier.lore": "यह स्लॉट प्रतिबंधित है!",
+  "slot_survival.actionbar.locked": "स्लॉट लॉक है! अपने हॉटबार का स्लॉट 1 इस्तेमाल करो।",
+  "slot_survival.msg.enabled": "सिस्टम चालू हो गया।",
+  "slot_survival.msg.paused": "सिस्टम रोका गया।",
+  "slot_survival.msg.offhand_on": "दूसरा हाथ लॉक हो गया।",
+  "slot_survival.msg.offhand_off": "दूसरा हाथ खाली है।",
+  "slot_survival.msg.uninstall": "बैरियर हटा दिए गए। अब तुम mods फ़ोल्डर से 1 SLOT SURVIVAL मॉड हटा सकते हो।",
+  "slot_survival.msg.status": "तुम्हारी इन्वेंटरी में लॉक बैरियर: %s",
+  "slot_survival.msg.status_hint": " (35 अपेक्षित, दूसरा हाथ लॉक होने पर 36)",
+  "slot_survival.msg.welcome": "केवल एक स्लॉट इस्तेमाल किया जा सकता है: हॉटबार का पहला। लॉक स्लॉट में रखी चीज़ें ज़मीन पर गिरा दी जाती हैं, कभी मिटाई नहीं जातीं।"
+}

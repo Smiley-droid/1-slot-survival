@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "GESLOTE SLOT",
+  "slot_survival.barrier.lore": "Hierdie slot is verbode!",
+  "slot_survival.actionbar.locked": "Geslote slot! Gebruik slot 1 van jou kitsbalk.",
+  "slot_survival.msg.enabled": "Stelsel geaktiveer.",
+  "slot_survival.msg.paused": "Stelsel gepouseer.",
+  "slot_survival.msg.offhand_on": "Tweede hand gesluit.",
+  "slot_survival.msg.offhand_off": "Tweede hand vry.",
+  "slot_survival.msg.uninstall": "Versperrings verwyder. Jy kan nou die mod 1 SLOT SURVIVAL uit die mods-vouer verwyder.",
+  "slot_survival.msg.status": "Sluitversperrings in jou inventaris: %s",
+  "slot_survival.msg.status_hint": " (35 verwag, 36 as die tweede hand gesluit is)",
+  "slot_survival.msg.welcome": "Slegs een slot kan gebruik word: die eerste op jou kitsbalk. Voorwerpe in geslote slotte word op die grond gegooi en word nooit uitgevee nie."
+}

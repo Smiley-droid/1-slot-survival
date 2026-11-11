@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ช่องที่ถูกล็อก",
+  "slot_survival.barrier.lore": "ช่องนี้ถูกห้ามใช้!",
+  "slot_survival.actionbar.locked": "ช่องถูกล็อก! ใช้ช่อง 1 ของแถบด่วนของคุณ",
+  "slot_survival.msg.enabled": "เปิดใช้งานระบบแล้ว",
+  "slot_survival.msg.paused": "หยุดระบบชั่วคราวแล้ว",
+  "slot_survival.msg.offhand_on": "ล็อกมือที่สองแล้ว",
+  "slot_survival.msg.offhand_off": "มือที่สองว่างแล้ว",
+  "slot_survival.msg.uninstall": "นำสิ่งกีดขวางออกแล้ว ตอนนี้คุณสามารถลบม็อด 1 SLOT SURVIVAL ออกจากโฟลเดอร์ mods ได้",
+  "slot_survival.msg.status": "สิ่งกีดขวางล็อกในคลังของคุณ: %s",
+  "slot_survival.msg.status_hint": " (คาดว่า 35 หรือ 36 หากล็อกมือที่สอง)",
+  "slot_survival.msg.welcome": "ใช้งานได้เพียงช่องเดียว: ช่องแรกของแถบด่วน ไอเท็มที่วางในช่องที่ล็อกจะถูกทิ้งลงพื้นและไม่ถูกลบเลย"
+}

@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "SLOT BLOQUEADO",
+  "slot_survival.barrier.lore": "Este espaço é proibido!",
+  "slot_survival.actionbar.locked": "Slot bloqueado! Use o slot 1 da sua barra de atalhos.",
+  "slot_survival.msg.enabled": "Sistema ativado.",
+  "slot_survival.msg.paused": "Sistema pausado.",
+  "slot_survival.msg.offhand_on": "Mão secundária bloqueada.",
+  "slot_survival.msg.offhand_off": "Mão secundária livre.",
+  "slot_survival.msg.uninstall": "Barreiras removidas. Agora você pode remover o mod 1 SLOT SURVIVAL da pasta mods.",
+  "slot_survival.msg.status": "Barreiras de bloqueio no seu inventário: %s",
+  "slot_survival.msg.status_hint": " (35 esperadas, 36 se a mão secundária estiver bloqueada)",
+  "slot_survival.msg.welcome": "Apenas um slot pode ser usado: o primeiro da sua barra de atalhos. Itens colocados em um slot bloqueado são jogados no chão, nunca excluídos."
+}

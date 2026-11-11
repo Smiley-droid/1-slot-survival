@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ZAKLENJENA REŽA",
+  "slot_survival.barrier.lore": "Ta reža je prepovedana!",
+  "slot_survival.actionbar.locked": "Zaklenjena reža! Uporabljaj režo 1 svoje hitre vrstice.",
+  "slot_survival.msg.enabled": "Sistem vklopljen.",
+  "slot_survival.msg.paused": "Sistem začasno ustavljen.",
+  "slot_survival.msg.offhand_on": "Druga roka zaklenjena.",
+  "slot_survival.msg.offhand_off": "Druga roka prosta.",
+  "slot_survival.msg.uninstall": "Ovire odstranjene. Zdaj lahko odstraniš mod 1 SLOT SURVIVAL iz mape mods.",
+  "slot_survival.msg.status": "Zaklepalnih ovir v inventarju: %s",
+  "slot_survival.msg.status_hint": " (pričakovanih 35, ali 36, če je druga roka zaklenjena)",
+  "slot_survival.msg.welcome": "Uporabna je samo ena reža: prva v hitri vrstici. Predmeti v zaklenjenih režah so odvrženi na tla in nikoli izbrisani."
+}

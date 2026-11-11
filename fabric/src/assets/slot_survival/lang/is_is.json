@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "LÆST RAUF",
+  "slot_survival.barrier.lore": "Þessi rauf er bönnuð!",
+  "slot_survival.actionbar.locked": "Læst rauf! Notaðu rauf 1 á flýtistikunni þinni.",
+  "slot_survival.msg.enabled": "Kerfið er virkjað.",
+  "slot_survival.msg.paused": "Kerfið er í bið.",
+  "slot_survival.msg.offhand_on": "Aukahönd læst.",
+  "slot_survival.msg.offhand_off": "Aukahönd laus.",
+  "slot_survival.msg.uninstall": "Hindranir fjarlægðar. Nú geturðu fjarlægt 1 SLOT SURVIVAL-modið úr mods-möppunni.",
+  "slot_survival.msg.status": "Læsingarhindranir í birgðum þínum: %s",
+  "slot_survival.msg.status_hint": " (35 væntanlegar, 36 ef aukahöndin er læst)",
+  "slot_survival.msg.welcome": "Aðeins ein rauf er nothæf: sú fyrsta á flýtistikunni. Hlutir í læstum raufum falla á jörðina og er aldrei eytt."
+}

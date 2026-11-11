@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "NAKA-LOCK NA SLOT",
+  "slot_survival.barrier.lore": "Bawal ang slot na ito!",
+  "slot_survival.actionbar.locked": "Naka-lock ang slot! Gamitin ang slot 1 ng iyong hotbar.",
+  "slot_survival.msg.enabled": "Naka-on na ang sistema.",
+  "slot_survival.msg.paused": "Naka-pause ang sistema.",
+  "slot_survival.msg.offhand_on": "Naka-lock ang pangalawang kamay.",
+  "slot_survival.msg.offhand_off": "Libre ang pangalawang kamay.",
+  "slot_survival.msg.uninstall": "Naalis na ang mga harang. Maaari mo nang alisin ang mod na 1 SLOT SURVIVAL sa folder na mods.",
+  "slot_survival.msg.status": "Mga harang na pang-lock sa inventory mo: %s",
+  "slot_survival.msg.status_hint": " (inaasahan ang 35, o 36 kung naka-lock ang pangalawang kamay)",
+  "slot_survival.msg.welcome": "Isang slot lang ang magagamit: ang una sa hotbar. Ang mga item na ilalagay sa naka-lock na slot ay ibabagsak sa lupa at hindi kailanman buburahin."
+}

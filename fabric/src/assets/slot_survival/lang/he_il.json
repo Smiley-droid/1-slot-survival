@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "משבצת נעולה",
+  "slot_survival.barrier.lore": "המשבצת הזו אסורה!",
+  "slot_survival.actionbar.locked": "משבצת נעולה! השתמש במשבצת 1 בשורת הפעולות המהירות.",
+  "slot_survival.msg.enabled": "המערכת הופעלה.",
+  "slot_survival.msg.paused": "המערכת הושהתה.",
+  "slot_survival.msg.offhand_on": "היד המשנית נעולה.",
+  "slot_survival.msg.offhand_off": "היד המשנית פנויה.",
+  "slot_survival.msg.uninstall": "המחסומים הוסרו. עכשיו אפשר להסיר את המוד 1 SLOT SURVIVAL מתיקיית mods.",
+  "slot_survival.msg.status": "מחסומי נעילה במלאי שלך: %s",
+  "slot_survival.msg.status_hint": " (מצופים 35, או 36 אם היד המשנית נעולה)",
+  "slot_survival.msg.welcome": "רק משבצת אחת ניתנת לשימוש: הראשונה בשורת הפעולות המהירות. פריטים שמוכנסים למשבצות נעולות נזרקים לקרקע ולעולם לא נמחקים."
+}

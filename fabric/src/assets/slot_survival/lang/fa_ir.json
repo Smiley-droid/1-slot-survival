@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "اسلات قفل‌شده",
+  "slot_survival.barrier.lore": "این اسلات ممنوع است!",
+  "slot_survival.actionbar.locked": "اسلات قفل است! از اسلات ۱ نوار سریع خود استفاده کن.",
+  "slot_survival.msg.enabled": "سیستم فعال شد.",
+  "slot_survival.msg.paused": "سیستم متوقف شد.",
+  "slot_survival.msg.offhand_on": "دست دوم قفل شد.",
+  "slot_survival.msg.offhand_off": "دست دوم آزاد است.",
+  "slot_survival.msg.uninstall": "مانع‌ها حذف شدند. اکنون می‌توانی مود 1 SLOT SURVIVAL را از پوشهٔ mods حذف کنی.",
+  "slot_survival.msg.status": "مانع‌های قفل در موجودی تو: %s",
+  "slot_survival.msg.status_hint": " (۳۵ مورد انتظار، یا ۳۶ اگر دست دوم قفل باشد)",
+  "slot_survival.msg.welcome": "فقط یک اسلات قابل استفاده است: اولین اسلات نوار سریع. آیتم‌هایی که در اسلات قفل‌شده قرار می‌گیرند روی زمین انداخته می‌شوند و هرگز حذف نمی‌شوند."
+}

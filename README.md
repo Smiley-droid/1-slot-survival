@@ -40,6 +40,26 @@ Seul le serveur (ou le solo) a besoin du mod : les joueurs n'ont rien à install
 2. Redémarre le serveur (pas de `/reload`).
 3. Le réglage se trouve dans `plugins/SlotSurvival/config.yml`.
 
+## Langues
+
+Les messages du mod Fabric (chat, barre d'action, nom et description de la barrière) sont **traduits dans 51 langues**
+(67 variantes régionales). Le texte s'affiche dans la langue choisie dans les options de Minecraft.
+
+| | |
+|---|---|
+| Europe de l'Ouest | anglais (US, GB, AU, CA, NZ), français (FR, CA), espagnol (ES, MX, AR, CL, EC, UY, VE), allemand (DE, AT, CH), italien, portugais (PT, BR), néerlandais (NL, BE), catalan, galicien, basque |
+| Europe du Nord | suédois, norvégien, danois, finnois, islandais, estonien, letton, lituanien |
+| Europe centrale et de l'Est | polonais, tchèque, slovaque, slovène, croate, bosniaque, serbe, macédonien, bulgare, roumain, hongrois, russe, ukrainien, biélorusse, albanais, grec |
+| Moyen-Orient et Asie | turc, hébreu, arabe, persan, hindi, bengali, thaï, vietnamien, indonésien, malais, filipino, japonais, coréen, chinois (simplifié, traditionnel, Hong Kong) |
+| Autre | afrikaans |
+
+**Important :** la traduction se fait **côté joueur**. Elle fonctionne si le mod est installé chez le joueur
+(solo, ou serveur où les joueurs ont aussi le mod). Un joueur sans le mod voit les messages en **anglais** (langue de repli).
+
+Ajouter ou corriger une langue : copier `fabric/src/assets/slot_survival/lang/en_us.json` vers `<code_langue>.json`
+(par exemple `ga_ie.json`), traduire les valeurs (garder le `%s` de `slot_survival.msg.status`), puis ouvrir une Pull Request.
+Le script `ci/check_lang.py` vérifie les fichiers à chaque push.
+
 ## Commandes
 
 ### Plugin Paper : `/slotsurvival`

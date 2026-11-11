@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ЗАКЛУЧЕН СЛОТ",
+  "slot_survival.barrier.lore": "Овој слот е забранет!",
+  "slot_survival.actionbar.locked": "Заклучен слот! Користи го слотот 1 од твојата лента за брз пристап.",
+  "slot_survival.msg.enabled": "Системот е вклучен.",
+  "slot_survival.msg.paused": "Системот е паузиран.",
+  "slot_survival.msg.offhand_on": "Втората рака е заклучена.",
+  "slot_survival.msg.offhand_off": "Втората рака е слободна.",
+  "slot_survival.msg.uninstall": "Бариерите се отстранети. Сега можеш да го отстраниш модот 1 SLOT SURVIVAL од папката mods.",
+  "slot_survival.msg.status": "Блокирачки бариери во инвентарот: %s",
+  "slot_survival.msg.status_hint": " (се очекуваат 35, или 36 ако втората рака е заклучена)",
+  "slot_survival.msg.welcome": "Употреблив е само еден слот: првиот на лентата за брз пристап. Предметите во заклучените слотови се фрлаат на земја и никогаш не се бришат."
+}

@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ロックされたスロット",
+  "slot_survival.barrier.lore": "このスロットは使用できません！",
+  "slot_survival.actionbar.locked": "スロットがロックされています！ホットバーのスロット1を使ってください。",
+  "slot_survival.msg.enabled": "システムを有効にしました。",
+  "slot_survival.msg.paused": "システムを一時停止しました。",
+  "slot_survival.msg.offhand_on": "オフハンドをロックしました。",
+  "slot_survival.msg.offhand_off": "オフハンドを解放しました。",
+  "slot_survival.msg.uninstall": "バリアを削除しました。mods フォルダーから 1 SLOT SURVIVAL を削除できます。",
+  "slot_survival.msg.status": "インベントリ内のロック用バリア: %s",
+  "slot_survival.msg.status_hint": " (想定は35個、オフハンドがロックされている場合は36個)",
+  "slot_survival.msg.welcome": "使用できるスロットはホットバーの最初の1つだけです。ロックされたスロットに置かれたアイテムは地面に落とされ、削除されることはありません。"
+}

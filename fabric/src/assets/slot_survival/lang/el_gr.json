@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ΚΛΕΙΔΩΜΕΝΗ ΘΕΣΗ",
+  "slot_survival.barrier.lore": "Αυτή η θέση είναι απαγορευμένη!",
+  "slot_survival.actionbar.locked": "Κλειδωμένη θέση! Χρησιμοποίησε τη θέση 1 της γραμμής συντομεύσεων.",
+  "slot_survival.msg.enabled": "Το σύστημα ενεργοποιήθηκε.",
+  "slot_survival.msg.paused": "Το σύστημα τέθηκε σε παύση.",
+  "slot_survival.msg.offhand_on": "Το δεύτερο χέρι κλειδώθηκε.",
+  "slot_survival.msg.offhand_off": "Το δεύτερο χέρι είναι ελεύθερο.",
+  "slot_survival.msg.uninstall": "Τα εμπόδια αφαιρέθηκαν. Τώρα μπορείς να αφαιρέσεις το mod 1 SLOT SURVIVAL από τον φάκελο mods.",
+  "slot_survival.msg.status": "Φραγμοί κλειδώματος στο απόθεμά σου: %s",
+  "slot_survival.msg.status_hint": " (αναμένονται 35, ή 36 αν το δεύτερο χέρι είναι κλειδωμένο)",
+  "slot_survival.msg.welcome": "Μόνο μία θέση είναι χρησιμοποιήσιμη: η πρώτη της γραμμής συντομεύσεων. Τα αντικείμενα σε κλειδωμένες θέσεις πέφτουν στο έδαφος και δεν διαγράφονται ποτέ."
+}

@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "LÅST PLASS",
+  "slot_survival.barrier.lore": "Denne plassen er forbudt!",
+  "slot_survival.actionbar.locked": "Låst plass! Bruk plass 1 i hurtigfeltet.",
+  "slot_survival.msg.enabled": "Systemet er aktivert.",
+  "slot_survival.msg.paused": "Systemet er satt på pause.",
+  "slot_survival.msg.offhand_on": "Andrehånd låst.",
+  "slot_survival.msg.offhand_off": "Andrehånd fri.",
+  "slot_survival.msg.uninstall": "Barrierer fjernet. Nå kan du fjerne modden 1 SLOT SURVIVAL fra mods-mappen.",
+  "slot_survival.msg.status": "Låsebarrierer i inventaret ditt: %s",
+  "slot_survival.msg.status_hint": " (35 forventet, 36 hvis andrehånden er låst)",
+  "slot_survival.msg.welcome": "Bare én plass kan brukes: den første i hurtigfeltet. Gjenstander i låste plasser slippes på bakken og slettes aldri."
+}

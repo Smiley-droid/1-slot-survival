@@ -8,7 +8,7 @@ execute as @a[tag=!sl_init] at @s run function slot_lock:init_player
 execute as @a[tag=sl_init,tag=!sl_exempt,gamemode=!spectator] at @s run function slot_lock:check_all
 
 # 3) Rappel si le joueur tient une barrière en main
-execute as @a[tag=sl_init,tag=!sl_exempt,gamemode=!spectator] if items entity @s weapon.mainhand minecraft:barrier[minecraft:custom_data~{slot_lock:1b}] run title @s actionbar {"text":"Slot bloqué ! Utilise le slot 1 de ta barre rapide.","color":"red"}
+execute as @a[tag=sl_init,tag=!sl_exempt,gamemode=!spectator] if items entity @s weapon.mainhand minecraft:barrier[minecraft:custom_data~{slot_lock:1b}] run title @s actionbar {"translate":"slot_survival.actionbar.locked","fallback":"Locked slot! Use slot 1 of your hotbar.","color":"red"}
 
 # 4) Nettoyage des barrières-placeholder jetées au sol (jamais les objets des joueurs)
 kill @e[type=item,nbt={Item:{components:{"minecraft:custom_data":{slot_lock:1b}}}}]

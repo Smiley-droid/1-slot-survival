@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "UŽRAKINTA VIETA",
+  "slot_survival.barrier.lore": "Ši vieta draudžiama!",
+  "slot_survival.actionbar.locked": "Užrakinta vieta! Naudok greitosios juostos 1 vietą.",
+  "slot_survival.msg.enabled": "Sistema įjungta.",
+  "slot_survival.msg.paused": "Sistema pristabdyta.",
+  "slot_survival.msg.offhand_on": "Antroji ranka užrakinta.",
+  "slot_survival.msg.offhand_off": "Antroji ranka laisva.",
+  "slot_survival.msg.uninstall": "Kliūtys pašalintos. Dabar gali pašalinti modifikaciją 1 SLOT SURVIVAL iš mods aplanko.",
+  "slot_survival.msg.status": "Blokuojančių kliūčių inventoriuje: %s",
+  "slot_survival.msg.status_hint": " (tikimasi 35, arba 36, jei antroji ranka užrakinta)",
+  "slot_survival.msg.welcome": "Galima naudoti tik vieną vietą: pirmąją greitosios juostos. Daiktai, įdėti į užrakintas vietas, išmetami ant žemės ir niekada netrinami."
+}

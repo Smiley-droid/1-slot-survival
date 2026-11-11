@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "Ô BỊ KHÓA",
+  "slot_survival.barrier.lore": "Ô này bị cấm!",
+  "slot_survival.actionbar.locked": "Ô bị khóa! Hãy dùng ô 1 trên thanh nhanh của bạn.",
+  "slot_survival.msg.enabled": "Đã bật hệ thống.",
+  "slot_survival.msg.paused": "Đã tạm dừng hệ thống.",
+  "slot_survival.msg.offhand_on": "Đã khóa tay phụ.",
+  "slot_survival.msg.offhand_off": "Tay phụ đã được mở.",
+  "slot_survival.msg.uninstall": "Đã gỡ các rào chắn. Bây giờ bạn có thể xóa mod 1 SLOT SURVIVAL khỏi thư mục mods.",
+  "slot_survival.msg.status": "Rào chắn khóa trong túi đồ của bạn: %s",
+  "slot_survival.msg.status_hint": " (dự kiến 35, hoặc 36 nếu tay phụ bị khóa)",
+  "slot_survival.msg.welcome": "Chỉ dùng được một ô: ô đầu tiên trên thanh nhanh. Vật phẩm đặt vào ô bị khóa sẽ bị thả xuống đất, không bao giờ bị xóa."
+}

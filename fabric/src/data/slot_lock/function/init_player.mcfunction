@@ -1,2 +1,2 @@
 tag @s add sl_init
-tellraw @s [{"text":"[1 SLOT SURVIVAL] ","color":"gold","bold":true},{"text":"Un seul slot est utilisable : le premier de ta barre rapide. Les objets mis dans un slot bloqué sont éjectés au sol, jamais supprimés.","color":"yellow","bold":false}]
+tellraw @s [{"text":"[1 SLOT SURVIVAL] ","color":"gold","bold":true},{"translate":"slot_survival.msg.welcome","fallback":"Only one slot is usable: the first slot of your hotbar. Items placed in a locked slot are dropped on the ground, never deleted.","color":"yellow","bold":false}]

@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "BLOĶĒTA VIETA",
+  "slot_survival.barrier.lore": "Šī vieta ir aizliegta!",
+  "slot_survival.actionbar.locked": "Bloķēta vieta! Izmanto ātrās joslas 1. vietu.",
+  "slot_survival.msg.enabled": "Sistēma ieslēgta.",
+  "slot_survival.msg.paused": "Sistēma apturēta.",
+  "slot_survival.msg.offhand_on": "Otra roka bloķēta.",
+  "slot_survival.msg.offhand_off": "Otra roka brīva.",
+  "slot_survival.msg.uninstall": "Barjeras noņemtas. Tagad vari noņemt modu 1 SLOT SURVIVAL no mods mapes.",
+  "slot_survival.msg.status": "Bloķējošo barjeru inventārā: %s",
+  "slot_survival.msg.status_hint": " (gaidāmas 35, vai 36, ja otra roka ir bloķēta)",
+  "slot_survival.msg.welcome": "Izmantojama tikai viena vieta: ātrās joslas pirmā. Priekšmeti bloķētajās vietās tiek nomesti zemē un nekad netiek dzēsti."
+}

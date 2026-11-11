@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ЗАБЛАКІРАВАНЫ СЛОТ",
+  "slot_survival.barrier.lore": "Гэты слот недаступны!",
+  "slot_survival.actionbar.locked": "Слот заблакіраваны! Выкарыстоўвай слот 1 панэлі хуткага доступу.",
+  "slot_survival.msg.enabled": "Сістэма ўключана.",
+  "slot_survival.msg.paused": "Сістэма прыпынена.",
+  "slot_survival.msg.offhand_on": "Другая рука заблакіравана.",
+  "slot_survival.msg.offhand_off": "Другая рука вольная.",
+  "slot_survival.msg.uninstall": "Бар'еры прыбраны. Цяпер можна выдаліць мод 1 SLOT SURVIVAL з тэчкі mods.",
+  "slot_survival.msg.status": "Блакавальных бар'ераў у інвентары: %s",
+  "slot_survival.msg.status_hint": " (чакаецца 35, або 36, калі другая рука заблакіравана)",
+  "slot_survival.msg.welcome": "Даступны толькі адзін слот — першы на панэлі хуткага доступу. Прадметы ў заблакіраваных слотах выкідваюцца на зямлю і ніколі не выдаляюцца."
+}

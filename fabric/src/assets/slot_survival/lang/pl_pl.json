@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ZABLOKOWANY SLOT",
+  "slot_survival.barrier.lore": "Ten slot jest niedostępny!",
+  "slot_survival.actionbar.locked": "Zablokowany slot! Używaj slotu 1 paska szybkiego dostępu.",
+  "slot_survival.msg.enabled": "System włączony.",
+  "slot_survival.msg.paused": "System wstrzymany.",
+  "slot_survival.msg.offhand_on": "Druga ręka zablokowana.",
+  "slot_survival.msg.offhand_off": "Druga ręka wolna.",
+  "slot_survival.msg.uninstall": "Bariery usunięte. Możesz teraz usunąć mod 1 SLOT SURVIVAL z folderu mods.",
+  "slot_survival.msg.status": "Barier blokujących w ekwipunku: %s",
+  "slot_survival.msg.status_hint": " (oczekiwano 35, lub 36, jeśli druga ręka jest zablokowana)",
+  "slot_survival.msg.welcome": "Używalny jest tylko jeden slot: pierwszy na pasku szybkiego dostępu. Przedmioty w zablokowanych slotach są wyrzucane na ziemię i nigdy nie znikają."
+}

@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "SLOT BLOCAT",
+  "slot_survival.barrier.lore": "Acest slot este interzis!",
+  "slot_survival.actionbar.locked": "Slot blocat! Folosește slotul 1 din bara ta rapidă.",
+  "slot_survival.msg.enabled": "Sistem activat.",
+  "slot_survival.msg.paused": "Sistem în pauză.",
+  "slot_survival.msg.offhand_on": "Mâna secundară blocată.",
+  "slot_survival.msg.offhand_off": "Mâna secundară liberă.",
+  "slot_survival.msg.uninstall": "Barierele au fost eliminate. Acum poți elimina modul 1 SLOT SURVIVAL din folderul mods.",
+  "slot_survival.msg.status": "Bariere de blocare în inventar: %s",
+  "slot_survival.msg.status_hint": " (35 așteptate, 36 dacă mâna secundară este blocată)",
+  "slot_survival.msg.welcome": "Un singur slot poate fi folosit: primul din bara rapidă. Obiectele puse într-un slot blocat sunt aruncate pe jos, niciodată șterse."
+}

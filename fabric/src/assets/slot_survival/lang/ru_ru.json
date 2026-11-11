@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ЗАБЛОКИРОВАННЫЙ СЛОТ",
+  "slot_survival.barrier.lore": "Этот слот недоступен!",
+  "slot_survival.actionbar.locked": "Слот заблокирован! Используй слот 1 панели быстрого доступа.",
+  "slot_survival.msg.enabled": "Система включена.",
+  "slot_survival.msg.paused": "Система приостановлена.",
+  "slot_survival.msg.offhand_on": "Вторая рука заблокирована.",
+  "slot_survival.msg.offhand_off": "Вторая рука свободна.",
+  "slot_survival.msg.uninstall": "Барьеры удалены. Теперь можно убрать мод 1 SLOT SURVIVAL из папки mods.",
+  "slot_survival.msg.status": "Блокирующих барьеров в инвентаре: %s",
+  "slot_survival.msg.status_hint": " (ожидается 35, или 36, если вторая рука заблокирована)",
+  "slot_survival.msg.welcome": "Доступен только один слот — первый на панели быстрого доступа. Предметы в заблокированных слотах выбрасываются на землю и никогда не удаляются."
+}

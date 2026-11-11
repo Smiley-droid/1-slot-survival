@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ЗАКЉУЧАН СЛОТ",
+  "slot_survival.barrier.lore": "Овај слот је забрањен!",
+  "slot_survival.actionbar.locked": "Закључан слот! Користи слот 1 своје траке за брзи приступ.",
+  "slot_survival.msg.enabled": "Систем укључен.",
+  "slot_survival.msg.paused": "Систем паузиран.",
+  "slot_survival.msg.offhand_on": "Друга рука закључана.",
+  "slot_survival.msg.offhand_off": "Друга рука слободна.",
+  "slot_survival.msg.uninstall": "Баријере уклоњене. Сада можеш уклонити мод 1 SLOT SURVIVAL из фасцикле mods.",
+  "slot_survival.msg.status": "Блокирајућих баријера у инвентару: %s",
+  "slot_survival.msg.status_hint": " (очекује се 35, или 36 ако је друга рука закључана)",
+  "slot_survival.msg.welcome": "Употребљив је само један слот: први на траци за брзи приступ. Предмети у закључаним слотовима бацају се на тло и никад се не бришу."
+}

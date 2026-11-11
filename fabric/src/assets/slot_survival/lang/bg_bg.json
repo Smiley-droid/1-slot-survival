@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ЗАКЛЮЧЕН СЛОТ",
+  "slot_survival.barrier.lore": "Този слот е забранен!",
+  "slot_survival.actionbar.locked": "Заключен слот! Използвай слот 1 от лентата за бърз достъп.",
+  "slot_survival.msg.enabled": "Системата е включена.",
+  "slot_survival.msg.paused": "Системата е на пауза.",
+  "slot_survival.msg.offhand_on": "Втората ръка е заключена.",
+  "slot_survival.msg.offhand_off": "Втората ръка е свободна.",
+  "slot_survival.msg.uninstall": "Бариерите са премахнати. Вече можеш да премахнеш мода 1 SLOT SURVIVAL от папката mods.",
+  "slot_survival.msg.status": "Блокиращи бариери в инвентара: %s",
+  "slot_survival.msg.status_hint": " (очакват се 35, или 36, ако втората ръка е заключена)",
+  "slot_survival.msg.welcome": "Използваем е само един слот: първият от лентата за бърз достъп. Предметите в заключени слотове се изхвърлят на земята и никога не се изтриват."
+}

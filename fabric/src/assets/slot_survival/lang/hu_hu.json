@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "ZÁROLT HELY",
+  "slot_survival.barrier.lore": "Ez a hely tiltott!",
+  "slot_survival.actionbar.locked": "Zárolt hely! Használd a gyorsmenü 1. helyét.",
+  "slot_survival.msg.enabled": "Rendszer bekapcsolva.",
+  "slot_survival.msg.paused": "Rendszer szüneteltetve.",
+  "slot_survival.msg.offhand_on": "Másodlagos kéz zárolva.",
+  "slot_survival.msg.offhand_off": "Másodlagos kéz szabad.",
+  "slot_survival.msg.uninstall": "Akadályok eltávolítva. Most már eltávolíthatod az 1 SLOT SURVIVAL modot a mods mappából.",
+  "slot_survival.msg.status": "Zároló akadályok a készletedben: %s",
+  "slot_survival.msg.status_hint": " (35 várt, 36, ha a másodlagos kéz zárolt)",
+  "slot_survival.msg.welcome": "Csak egy hely használható: a gyorsmenü első helye. A zárolt helyekre tett tárgyak a földre esnek, soha nem törlődnek."
+}

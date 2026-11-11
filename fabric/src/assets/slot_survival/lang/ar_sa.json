@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "خانة مقفلة",
+  "slot_survival.barrier.lore": "هذه الخانة ممنوعة!",
+  "slot_survival.actionbar.locked": "خانة مقفلة! استخدم الخانة 1 في شريط الوصول السريع.",
+  "slot_survival.msg.enabled": "تم تفعيل النظام.",
+  "slot_survival.msg.paused": "تم إيقاف النظام مؤقتًا.",
+  "slot_survival.msg.offhand_on": "اليد الثانية مقفلة.",
+  "slot_survival.msg.offhand_off": "اليد الثانية حرة.",
+  "slot_survival.msg.uninstall": "تمت إزالة الحواجز. يمكنك الآن إزالة مود 1 SLOT SURVIVAL من مجلد mods.",
+  "slot_survival.msg.status": "حواجز القفل في حقيبتك: %s",
+  "slot_survival.msg.status_hint": " (المتوقع 35، أو 36 إذا كانت اليد الثانية مقفلة)",
+  "slot_survival.msg.welcome": "خانة واحدة فقط قابلة للاستخدام: الأولى في شريط الوصول السريع. تُرمى العناصر الموضوعة في الخانات المقفلة على الأرض ولا تُحذف أبدًا."
+}

@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "GESPERRTER SLOT",
+  "slot_survival.barrier.lore": "Dieser Platz ist gesperrt!",
+  "slot_survival.actionbar.locked": "Gesperrter Slot! Nutze Slot 1 deiner Schnellleiste.",
+  "slot_survival.msg.enabled": "System aktiviert.",
+  "slot_survival.msg.paused": "System pausiert.",
+  "slot_survival.msg.offhand_on": "Zweithand gesperrt.",
+  "slot_survival.msg.offhand_off": "Zweithand frei.",
+  "slot_survival.msg.uninstall": "Barrieren entfernt. Du kannst die Mod 1 SLOT SURVIVAL jetzt aus dem mods-Ordner löschen.",
+  "slot_survival.msg.status": "Sperrbarrieren in deinem Inventar: %s",
+  "slot_survival.msg.status_hint": " (35 erwartet, 36 wenn die Zweithand gesperrt ist)",
+  "slot_survival.msg.welcome": "Nur ein Slot ist nutzbar: der erste deiner Schnellleiste. Gegenstände in gesperrten Slots werden auf den Boden geworfen, nie gelöscht."
+}

@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "RANURA BLOQUEJADA",
+  "slot_survival.barrier.lore": "Aquesta ranura està prohibida!",
+  "slot_survival.actionbar.locked": "Ranura bloquejada! Utilitza la ranura 1 de la teva barra ràpida.",
+  "slot_survival.msg.enabled": "Sistema activat.",
+  "slot_survival.msg.paused": "Sistema en pausa.",
+  "slot_survival.msg.offhand_on": "Mà secundària bloquejada.",
+  "slot_survival.msg.offhand_off": "Mà secundària lliure.",
+  "slot_survival.msg.uninstall": "Barreres eliminades. Ara pots eliminar el mod 1 SLOT SURVIVAL de la carpeta mods.",
+  "slot_survival.msg.status": "Barreres de bloqueig a l'inventari: %s",
+  "slot_survival.msg.status_hint": " (35 esperades, 36 si la mà secundària està bloquejada)",
+  "slot_survival.msg.welcome": "Només es pot utilitzar una ranura: la primera de la barra ràpida. Els objectes col·locats en una ranura bloquejada es deixen caure a terra, mai s'eliminen."
+}

@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "已锁定的栏位",
+  "slot_survival.barrier.lore": "此栏位已被禁用！",
+  "slot_survival.actionbar.locked": "栏位已锁定！请使用快捷栏的第 1 格。",
+  "slot_survival.msg.enabled": "系统已启用。",
+  "slot_survival.msg.paused": "系统已暂停。",
+  "slot_survival.msg.offhand_on": "副手已锁定。",
+  "slot_survival.msg.offhand_off": "副手已解锁。",
+  "slot_survival.msg.uninstall": "屏障已移除。现在可以从 mods 文件夹中移除 1 SLOT SURVIVAL 模组了。",
+  "slot_survival.msg.status": "你的物品栏中的锁定屏障：%s",
+  "slot_survival.msg.status_hint": " （预期 35 个，副手锁定时为 36 个）",
+  "slot_survival.msg.welcome": "只有一个栏位可用：快捷栏的第一格。放入已锁定栏位的物品会被丢到地上，绝不会被删除。"
+}

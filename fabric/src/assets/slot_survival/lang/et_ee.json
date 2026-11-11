@@ -1,0 +1,13 @@
+{
+  "slot_survival.barrier.name": "LUKUSTATUD PESA",
+  "slot_survival.barrier.lore": "See pesa on keelatud!",
+  "slot_survival.actionbar.locked": "Lukustatud pesa! Kasuta kiirriba pesa 1.",
+  "slot_survival.msg.enabled": "Süsteem on sisse lülitatud.",
+  "slot_survival.msg.paused": "Süsteem on peatatud.",
+  "slot_survival.msg.offhand_on": "Teine käsi lukustatud.",
+  "slot_survival.msg.offhand_off": "Teine käsi vaba.",
+  "slot_survival.msg.uninstall": "Tõkked eemaldatud. Nüüd võid mooduli 1 SLOT SURVIVAL kaustast mods eemaldada.",
+  "slot_survival.msg.status": "Lukustustõkkeid seljakotis: %s",
+  "slot_survival.msg.status_hint": " (oodatakse 35, või 36, kui teine käsi on lukustatud)",
+  "slot_survival.msg.welcome": "Kasutada saab ainult ühte pesa: kiirriba esimest. Lukustatud pesadesse pandud esemed visatakse maha ega kustutata kunagi."
+}
