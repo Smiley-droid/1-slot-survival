@@ -398,7 +398,9 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
         selfCheck(sender, "action bar", () -> sender.sendActionBar(Component.text("test", NamedTextColor.RED)));
         selfCheck(sender, "ejection au sol", () -> {
             org.bukkit.World world = Bukkit.getWorlds().get(0);
-            Item dropped = world.dropItem(world.getSpawnLocation().add(0, 2, 0), new ItemStack(Material.DIAMOND, 3));
+            org.bukkit.Location where = world.getSpawnLocation().add(0, 2, 0);
+            where.getChunk().load(true); // sans joueur, le chunk de spawn peut être déchargé
+            Item dropped = world.dropItem(where, new ItemStack(Material.DIAMOND, 3));
             dropped.setPickupDelay(50);
             dropped.setVelocity(new Vector(0, 0.2, 0));
             boolean valid = dropped.isValid();
