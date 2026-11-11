@@ -1,0 +1,2 @@
+execute store result score #n sl_tmp run clear @s minecraft:barrier[minecraft:custom_data~{slot_lock:1b}] 0
+tellraw @s [{"text":"[1 SLOT SURVIVAL] ","color":"gold","bold":true},{"text":"Barrières de blocage dans ton inventaire : ","color":"yellow","bold":false},{"score":{"name":"#n","objective":"sl_tmp"},"color":"white"},{"text":" (35 attendues, 36 si la main secondaire est bloquée)","color":"gray"}]

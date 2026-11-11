@@ -1,0 +1,10 @@
+{
+  "criteria": {
+    "changed": {
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "rewards": {
+    "function": "slot_lock:on_inventory_changed"
+  }
+}
