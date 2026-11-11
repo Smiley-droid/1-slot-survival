@@ -311,7 +311,7 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
         sender.sendMessage(PREFIX.append(Component.text(text, color).decoration(TextDecoration.BOLD, false)));
     }
 
-    private void setEnabled(boolean value) {
+    private void changeEnabled(boolean value) {
         enabled = value;
         getConfig().set("enabled", value);
         saveConfig();
@@ -336,12 +336,12 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
         }
         switch (args[0].toLowerCase()) {
             case "enable" -> {
-                setEnabled(true);
+                changeEnabled(true);
                 reply(Bukkit.getConsoleSender(), "Système activé.", NamedTextColor.GREEN);
                 Bukkit.getOnlinePlayers().forEach(p -> reply(p, "Système activé.", NamedTextColor.GREEN));
             }
             case "pause" -> {
-                setEnabled(false);
+                changeEnabled(false);
                 Bukkit.getOnlinePlayers().forEach(p -> reply(p, "Système en pause.", NamedTextColor.RED));
             }
             case "offhand" -> {
@@ -362,7 +362,7 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
                 }
             }
             case "uninstall" -> {
-                setEnabled(false);
+                changeEnabled(false);
                 Bukkit.getOnlinePlayers().forEach(p -> reply(p,
                         "Barrières retirées. Tu peux maintenant supprimer le plugin SlotSurvival.", NamedTextColor.YELLOW));
             }
