@@ -107,7 +107,8 @@ jobs:
           ls srv/mods
           export CMDS='forceload add 0 0|slotsurvival pause|scoreboard players get #enabled sl_cfg|slotsurvival enable|scoreboard players get #enabled sl_cfg|slotsurvival offhand on|scoreboard players get #offhand sl_cfg|slotsurvival offhand off|scoreboard players get #offhand sl_cfg|slotsurvival status|slotsurvival uninstall|scoreboard players get #enabled sl_cfg|slotsurvival enable|summon minecraft:armor_stand 0 100 0 {Tags:["t"],NoGravity:1b}|item replace entity @e[tag=t,limit=1] weapon.mainhand with minecraft:diamond 5|execute as @e[tag=t,limit=1] at @s run function slot_lock:fix {slot:"weapon.mainhand",path:"equipment.mainhand"}|data get entity @e[tag=t,limit=1] equipment.mainhand.id|data get entity @e[type=item,limit=1] Item.count|slotsurvival unknown|datapack list'
           ci/run_server.sh srv java -Xmx1G -jar fabric.jar nogui > out.txt 2>&1 || true
-          python3 ci/summarize.py "FABRIC-${{ matrix.mc }}" out.txt 'System chat|ERROR|Exception|Caused|Failed|Done \(|slot_survival|Mod'
+          python3 ci/summarize.py "FABRIC-${{ matrix.mc }}" out.txt 'System chat|Running function|enabled has|offhand has|Armor Stand|Diamond|Incorrect|Unknown|ERROR|Failed|Done \(|slot_survival|data pack'
+          python3 ci/summarize.py "FABRIC-RAW-${{ matrix.mc }}" out.txt '.' tail
 
   test-paper:
     name: Test Paper ${{ matrix.mc }}
