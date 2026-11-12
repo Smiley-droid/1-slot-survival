@@ -2,6 +2,7 @@ package io.github.smileydroid.slotsurvival;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -50,10 +51,12 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
     private NamespacedKey initKey;
     private boolean enabled;
     private boolean blockOffhand;
+    private Lang lang;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
+        lang = new Lang(getFile(), getLogger());
         lockKey = new NamespacedKey(this, "lock");
         initKey = new NamespacedKey(this, "init");
         enabled = getConfig().getBoolean("enabled", true);
@@ -69,14 +72,25 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
         getServer().getScheduler().runTaskTimer(this, this::sweep, 10L, 10L);
     }
 
+    // ----------------------------------------------------------- traductions
+
+    /** Locale d'un destinataire : celle du client pour un joueur, l'anglais pour la console. */
+    private static Locale localeOf(CommandSender sender) {
+        return sender instanceof Player player ? player.locale() : Locale.ENGLISH;
+    }
+
+    private String tr(CommandSender sender, String key) {
+        return lang.get(localeOf(sender), "slot_survival." + key);
+    }
+
     // ------------------------------------------------------------------ objets
 
-    private ItemStack createLock() {
+    private ItemStack createLock(CommandSender owner) {
         ItemStack stack = new ItemStack(Material.BARRIER);
         ItemMeta meta = stack.getItemMeta();
-        meta.displayName(Component.text("SLOT BLOQUÉ", NamedTextColor.RED, TextDecoration.BOLD)
+        meta.displayName(Component.text(tr(owner, "barrier.name"), NamedTextColor.RED, TextDecoration.BOLD)
                 .decoration(TextDecoration.ITALIC, false));
-        meta.lore(List.of(Component.text("Cet emplacement est interdit !", NamedTextColor.GRAY)
+        meta.lore(List.of(Component.text(tr(owner, "barrier.lore"), NamedTextColor.GRAY)
                 .decoration(TextDecoration.ITALIC, false)));
         meta.getPersistentDataContainer().set(lockKey, PersistentDataType.BYTE, (byte) 1);
         stack.setItemMeta(meta);
@@ -108,7 +122,7 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
         for (Player player : Bukkit.getOnlinePlayers()) {
             process(player);
             if (isActive(player) && isLock(player.getInventory().getItemInMainHand())) {
-                player.sendActionBar(Component.text("Slot bloqué ! Utilise le slot 1 de ta barre rapide.", NamedTextColor.RED));
+                player.sendActionBar(Component.text(tr(player, "actionbar.locked"), NamedTextColor.RED));
             }
         }
     }
@@ -131,10 +145,7 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
         }
         if (!player.getPersistentDataContainer().has(initKey, PersistentDataType.BYTE)) {
             player.getPersistentDataContainer().set(initKey, PersistentDataType.BYTE, (byte) 1);
-            player.sendMessage(PREFIX.append(Component.text(
-                    "Un seul slot est utilisable : le premier de ta barre rapide. "
-                            + "Les objets mis dans un slot bloqué sont éjectés au sol, jamais supprimés.",
-                    NamedTextColor.YELLOW).decoration(TextDecoration.BOLD, false)));
+            reply(player, tr(player, "msg.welcome"), NamedTextColor.YELLOW);
         }
         enforce(player);
     }
@@ -155,7 +166,7 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
         if (blockOffhand) {
             if (!isLock(off)) {
                 if (isEmpty(off) || eject(player, off)) {
-                    inv.setItemInOffHand(createLock());
+                    inv.setItemInOffHand(createLock(player));
                 }
             }
         } else if (isLock(off)) {
@@ -171,7 +182,7 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
         if (!isEmpty(current) && !eject(player, current)) {
             return; // l'éjection a échoué : l'objet reste chez le joueur (jamais de perte)
         }
-        inv.setItem(slot, createLock());
+        inv.setItem(slot, createLock(player));
     }
 
     /** Dépose une copie de l'objet au sol. Renvoie true si l'objet a bien été éjecté. */
@@ -312,12 +323,12 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
     }
 
     /** Informe tous les joueurs connectés, et l'émetteur s'il n'est pas un joueur (console). */
-    private void announce(CommandSender sender, String text, NamedTextColor color) {
+    private void announce(CommandSender sender, String key, NamedTextColor color) {
         for (Player player : Bukkit.getOnlinePlayers()) {
-            reply(player, text, color);
+            reply(player, tr(player, key), color);
         }
         if (!(sender instanceof Player)) {
-            reply(sender, text, color);
+            reply(sender, tr(sender, key), color);
         }
     }
 
@@ -341,55 +352,57 @@ public final class SlotSurvival extends JavaPlugin implements Listener, TabExecu
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        String usage = "/" + label + " <enable|pause|offhand on|off|status|uninstall>";
         if (args.length == 0) {
-            reply(sender, "Utilisation : /" + label + " <enable|pause|offhand on|off|status|uninstall|selftest>", NamedTextColor.YELLOW);
-            reply(sender, "Système : " + (enabled ? "activé" : "en pause")
-                    + " | main secondaire : " + (blockOffhand ? "bloquée" : "libre"), NamedTextColor.GRAY);
+            reply(sender, usage, NamedTextColor.YELLOW);
+            sendState(sender);
             return true;
         }
         switch (args[0].toLowerCase()) {
             case "enable" -> {
                 changeEnabled(true);
-                announce(sender, "Système activé.", NamedTextColor.GREEN);
+                announce(sender, "msg.enabled", NamedTextColor.GREEN);
             }
             case "pause" -> {
                 changeEnabled(false);
-                announce(sender, "Système en pause.", NamedTextColor.RED);
+                announce(sender, "msg.paused", NamedTextColor.RED);
             }
             case "offhand" -> {
                 if (args.length < 2 || !(args[1].equalsIgnoreCase("on") || args[1].equalsIgnoreCase("off"))) {
-                    reply(sender, "Utilisation : /" + label + " offhand <on|off>", NamedTextColor.YELLOW);
+                    reply(sender, "/" + label + " offhand <on|off>", NamedTextColor.YELLOW);
                     return true;
                 }
                 boolean on = args[1].equalsIgnoreCase("on");
                 setBlockOffhand(on);
-                announce(sender, on ? "Main secondaire bloquée." : "Main secondaire libre.", NamedTextColor.YELLOW);
+                announce(sender, on ? "msg.offhand_on" : "msg.offhand_off", NamedTextColor.YELLOW);
             }
             case "status" -> {
-                reply(sender, "Système : " + (enabled ? "activé" : "en pause")
-                        + " | main secondaire : " + (blockOffhand ? "bloquée" : "libre"), NamedTextColor.YELLOW);
+                sendState(sender);
                 if (sender instanceof Player player) {
-                    reply(sender, "Barrières dans ton inventaire : " + countLocks(player)
-                            + " (35 attendues, 36 si la main secondaire est bloquée)", NamedTextColor.YELLOW);
+                    reply(sender, tr(sender, "msg.status").replace("%s", String.valueOf(countLocks(player)))
+                            + tr(sender, "msg.status_hint"), NamedTextColor.YELLOW);
                 }
             }
             case "uninstall" -> {
                 changeEnabled(false);
-                announce(sender, "Barrières retirées. Tu peux maintenant supprimer le plugin SlotSurvival.", NamedTextColor.YELLOW);
+                announce(sender, "msg.uninstall", NamedTextColor.YELLOW);
             }
             case "selftest" -> selfTest(sender);
-            default -> {
-                reply(sender, "Commande inconnue. Utilisation : /" + label
-                        + " <enable|pause|offhand on|off|status|uninstall>", NamedTextColor.RED);
-            }
+            default -> reply(sender, usage, NamedTextColor.RED);
         }
         return true;
+    }
+
+    /** Affiche l'état du système et de la main secondaire, dans la langue de l'émetteur. */
+    private void sendState(CommandSender sender) {
+        reply(sender, tr(sender, enabled ? "msg.enabled" : "msg.paused"), enabled ? NamedTextColor.GREEN : NamedTextColor.RED);
+        reply(sender, tr(sender, blockOffhand ? "msg.offhand_on" : "msg.offhand_off"), NamedTextColor.GRAY);
     }
 
     /** Diagnostic : exerce les API utilisées (objets, messages, action bar, éjection) sans joueur. */
     private void selfTest(CommandSender sender) {
         selfCheck(sender, "creation de la barriere", () -> {
-            ItemStack lock = createLock();
+            ItemStack lock = createLock(sender);
             if (!isLock(lock)) {
                 throw new IllegalStateException("la barriere n'est pas reconnue");
             }

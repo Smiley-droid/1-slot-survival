@@ -1,0 +1,36 @@
+plugins {
+    id 'fabric-loom' version "${loom_version}"
+}
+
+version = project.mod_version
+base { archivesName = '1-slot-survival-fabric-1.21.11' }
+
+sourceSets {
+    main {
+        java.srcDir '../common/src/main/java'
+        resources.srcDir '../common/src/main/resources'
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "minecraft_dependency", project.minecraft_dependency
+    inputs.property "java_min", project.java_min
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version,
+               "minecraft_dependency": project.minecraft_dependency,
+               "java_min": project.java_min
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+    options.encoding = 'UTF-8'
+}

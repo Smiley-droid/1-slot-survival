@@ -11,50 +11,139 @@ permissions:
   contents: write
 
 jobs:
-  fabric:
-    name: Mod Fabric
+  lang:
+    name: Traductions
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Vérifier les traductions
-        run: python3 ci/check_lang.py
-      - name: Construire le jar
+      - run: python3 ci/check_lang.py
+
+  fabric:
+    name: Fabric ${{ matrix.name }}
+    needs: lang
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: '1.21.11', dir: mc-1.21.11, mc: '1.21.11', java: '21' }
+          - { name: '26.x',    dir: mc-26,      mc: '26.1.2',  java: '25' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '${{ matrix.java }}' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: current }
+      - name: Résoudre les versions Fabric
+        id: v
+        run: python3 ci/resolve_versions.py "${{ matrix.mc }}" | tee -a "$GITHUB_OUTPUT"
+      - name: Compiler
         run: |
-          VERSION=$(python3 -c "import json;print(json.load(open('fabric/src/fabric.mod.json'))['version'])")
-          mkdir -p dist
-          (cd fabric/src && zip -q -r "../../dist/1-slot-survival-fabric-${VERSION}.jar" .)
-          unzip -l dist/*.jar | tail -n 5
+          if ! gradle -p fabric/${{ matrix.dir }} --no-daemon --console=plain build \
+              -Pminecraft_version=${{ matrix.mc }} -Ploader_version=${{ steps.v.outputs.loader }} \
+              -Pfabric_api_version=${{ steps.v.outputs.api }} > build.log 2>&1; then
+            grep -E "error:|ERROR|FAILED|What went wrong|Could not|> " build.log | head -25 | while read -r l; do echo "::error::${l}"; done
+            exit 1
+          fi
+          ls fabric/${{ matrix.dir }}/build/libs
       - uses: actions/upload-artifact@v4
         with:
-          name: fabric
-          path: dist/*.jar
+          name: fabric-${{ matrix.dir }}
+          path: |
+            fabric/${{ matrix.dir }}/build/libs/*.jar
+            !fabric/${{ matrix.dir }}/build/libs/*-sources.jar
 
   paper:
-    name: Plugin Paper
+    name: Paper (compilation)
+    needs: lang
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '21'
-          cache: maven
+        with: { distribution: temurin, java-version: '21', cache: maven }
       - name: Compiler
         run: |
           if ! mvn -B -f paper/pom.xml package > build.log 2>&1; then
             grep -E "ERROR|error:" build.log | head -15 | while read -r l; do echo "::error::${l}"; done
             exit 1
           fi
-          tail -n 15 build.log
+          tail -n 8 build.log
       - uses: actions/upload-artifact@v4
         with:
           name: paper
           path: paper/target/1-slot-survival-paper-*.jar
 
+  test-fabric:
+    name: Test Fabric ${{ matrix.mc }}
+    needs: fabric
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { mc: '1.21.11', artifact: fabric-mc-1.21.11, java: '21' }
+          - { mc: '26.3',    artifact: fabric-mc-26,      java: '25' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '${{ matrix.java }}' }
+      - uses: actions/download-artifact@v4
+        with: { name: '${{ matrix.artifact }}', path: srv/mods }
+      - name: Lancer le serveur et tester les commandes
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, urllib.parse
+          H = {"User-Agent":"slot-survival-ci"}
+          def get(u): return urllib.request.urlopen(urllib.request.Request(u, headers=H)).read()
+          mc = "${{ matrix.mc }}"
+          loader = [x for x in json.loads(get("https://meta.fabricmc.net/v2/versions/loader")) if x.get("stable")][0]["version"]
+          inst = [x for x in json.loads(get("https://meta.fabricmc.net/v2/versions/installer")) if x.get("stable")][0]["version"]
+          open("srv/fabric.jar","wb").write(get(f"https://meta.fabricmc.net/v2/versions/loader/{mc}/{loader}/{inst}/server/jar"))
+          q = "https://api.modrinth.com/v2/project/fabric-api/version?game_versions=" + urllib.parse.quote(json.dumps([mc])) + "&loaders=" + urllib.parse.quote('["fabric"]')
+          v = json.loads(get(q))[0]; f = v["files"][0]
+          print("fabric-api", v["version_number"])
+          open("srv/mods/"+f["filename"],"wb").write(get(f["url"]))
+          PY
+          ls srv/mods
+          export CMDS='forceload add 0 0|slotsurvival pause|scoreboard players get #enabled sl_cfg|slotsurvival enable|scoreboard players get #enabled sl_cfg|slotsurvival offhand on|scoreboard players get #offhand sl_cfg|slotsurvival offhand off|scoreboard players get #offhand sl_cfg|slotsurvival status|slotsurvival uninstall|scoreboard players get #enabled sl_cfg|slotsurvival enable|summon minecraft:armor_stand 0 100 0 {Tags:["t"],NoGravity:1b}|item replace entity @e[tag=t,limit=1] weapon.mainhand with minecraft:diamond 5|execute as @e[tag=t,limit=1] at @s run function slot_lock:fix {slot:"weapon.mainhand",path:"equipment.mainhand"}|data get entity @e[tag=t,limit=1] equipment.mainhand.id|data get entity @e[type=item,limit=1] Item.count|slotsurvival unknown|datapack list'
+          ci/run_server.sh srv java -Xmx1G -jar fabric.jar nogui > out.txt 2>&1 || true
+          python3 ci/summarize.py "FABRIC-${{ matrix.mc }}" out.txt 'System chat|ERROR|Exception|Caused|Failed|Done \(|slot_survival|Mod'
+
+  test-paper:
+    name: Test Paper ${{ matrix.mc }}
+    needs: paper
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { mc: '1.21.11', java: '21' }
+          - { mc: '26.3',    java: '25' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '${{ matrix.java }}' }
+      - uses: actions/download-artifact@v4
+        with: { name: paper, path: srv/plugins }
+      - name: Lancer Paper et tester les commandes
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request
+          H = {"User-Agent":"slot-survival-ci"}
+          builds = json.load(urllib.request.urlopen(urllib.request.Request("https://fill.papermc.io/v3/projects/paper/versions/${{ matrix.mc }}/builds", headers=H)))
+          url = builds[0]["downloads"]["server:default"]["url"]
+          print("paper", builds[0].get("id"), url)
+          open("srv/paper.jar","wb").write(urllib.request.urlopen(urllib.request.Request(url, headers=H)).read())
+          PY
+          printf 'online-mode=false\nlevel-type=minecraft\\:flat\nview-distance=2\nsimulation-distance=2\n' > srv/server.properties
+          export CMDS='plugins|slotsurvival|slotsurvival status|slotsurvival selftest|slotsurvival pause|slotsurvival enable|slotsurvival offhand on|slotsurvival offhand off|slotsurvival uninstall|slotsurvival enable'
+          ci/run_server.sh srv java -Xmx1G -jar paper.jar --nogui > out.txt 2>&1 || true
+          python3 ci/summarize.py "PAPER-${{ matrix.mc }}" out.txt 'slotsurvival|SlotSurvival|ERROR|Exception|Caused|NoSuch|selftest|PASS|FAIL|Done \(|fichiers de langue|Locking|System|Système'
+
   release:
     name: Release
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [fabric, paper]
+    needs: [test-fabric, test-paper]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
@@ -65,7 +154,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          ls -la artifacts
           gh release create "${GITHUB_REF_NAME}" artifacts/*.jar \
             --repo "${GITHUB_REPOSITORY}" \
             --title "1 SLOT SURVIVAL ${GITHUB_REF_NAME}" \
-            --notes "Mod Fabric (1.21.11 à 26.x, nécessite Fabric API) et plugin Paper (1.21.11 à 26.x)."
+            --notes "Fabric mod (1.21.11 and 26.x, requires Fabric API) and Paper plugin (1.21.11 and 26.x). See the README for commands and languages."

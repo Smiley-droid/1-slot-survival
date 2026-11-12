@@ -2,7 +2,7 @@
 """Vérifie les fichiers de langue du mod : JSON valide, mêmes clés que en_us, un seul %s dans msg.status,
 et que chaque clé utilisée dans les fonctions existe."""
 import json, pathlib, re, sys
-root = pathlib.Path(__file__).resolve().parent.parent / "fabric" / "src"
+root = pathlib.Path(__file__).resolve().parent.parent / "fabric" / "common" / "src" / "main" / "resources"
 lang = root / "assets" / "slot_survival" / "lang"
 ref = json.loads((lang / "en_us.json").read_text(encoding="utf-8"))
 errors = []

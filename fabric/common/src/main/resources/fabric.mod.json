@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "slot_survival",
+  "version": "${version}",
+  "name": "1 SLOT SURVIVAL",
+  "description": "Only one usable inventory slot. Every other slot is blocked by a barrier; items dropped into a blocked slot are thrown on the ground, never lost.",
+  "authors": ["Smiley-droid"],
+  "contact": {
+    "homepage": "https://github.com/Smiley-droid/1-slot-survival",
+    "sources": "https://github.com/Smiley-droid/1-slot-survival",
+    "issues": "https://github.com/Smiley-droid/1-slot-survival/issues"
+  },
+  "environment": "*",
+  "entrypoints": {
+    "main": ["io.github.smileydroid.slotsurvival.SlotSurvivalMod"]
+  },
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "${minecraft_dependency}",
+    "java": ">=${java_min}",
+    "fabric-api": "*"
+  }
+}
