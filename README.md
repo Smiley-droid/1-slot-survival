@@ -1,210 +1,179 @@
 # 1 SLOT SURVIVAL
 
-> Un seul slot utilisable. Tout le reste est bloqué.
+**English** · [Français](README.fr.md)
 
-Dans **1 SLOT SURVIVAL**, tu ne peux utiliser que le **premier slot de ta barre rapide**. Les 35 autres
-emplacements de l'inventaire sont remplis de barrières **« SLOT BLOQUÉ »** impossibles à utiliser.
-Si un objet atterrit dans un slot bloqué (ramassage, craft, glisser-déposer, commande…), il est
-**éjecté au sol** devant toi : il n'est jamais supprimé ni dupliqué, et la barrière revient.
+> One usable inventory slot. Everything else is locked.
 
-Disponible en deux versions :
+In **1 SLOT SURVIVAL** you can only use the **first slot of your hotbar**. The other 35 inventory slots are filled with
+**"LOCKED SLOT"** barriers that cannot be used. If an item ends up in a locked slot (pickup, crafting, drag and drop,
+commands…), it is **thrown on the ground** in front of you: items are never deleted or duplicated, and the barrier comes back.
 
-| Version | Pour | Minecraft | Prérequis |
-|---------|------|-----------|-----------|
-| **Mod Fabric** | Solo et serveurs Fabric | 1.21.11 → 26.x | Fabric Loader + **Fabric API** |
-| **Plugin Paper** | Serveurs Paper | 1.21.11 → 26.x | Paper |
+Available as a **Fabric mod** and a **Paper plugin**, translated into **51 languages**.
 
-Java : **21** pour Minecraft 1.21.11, **25** pour Minecraft 26.x.
+## Downloads
 
-## Téléchargement
+Get the `.jar` files from the **[Releases](../../releases)** tab.
 
-Les fichiers `.jar` sont dans l'onglet **[Releases](../../releases)** :
+| File | For | Minecraft | Requirements |
+|------|-----|-----------|--------------|
+| `1-slot-survival-fabric-1.21.11-*.jar` | Fabric (singleplayer or server) | 1.21.11 | Fabric Loader, **Fabric API**, Java 21 |
+| `1-slot-survival-fabric-26.x-*.jar` | Fabric (singleplayer or server) | 26.1 and newer | Fabric Loader, **Fabric API**, Java 25 |
+| `1-slot-survival-paper-*.jar` | Paper servers | 1.21.11 and 26.x | Paper, Java 21 (1.21.11) or 25 (26.x) |
 
-- `1-slot-survival-fabric-<version>.jar` : mod Fabric
-- `1-slot-survival-paper-<version>.jar` : plugin Paper
-
-Ils sont compilés automatiquement par GitHub Actions à chaque nouvelle version, et testés sur de vrais serveurs **Paper 26.3** et **Fabric 26.3** (chargement, commandes, éjection d'objets).
+Every release is built by GitHub Actions and tested on real servers (**Fabric 1.21.11 and 26.3, Paper 1.21.11 and 26.3**)
+before it is published. Other 26.x versions should work but are not tested individually.
 
 ## Installation
 
-### Mod Fabric
-1. Installe [Fabric Loader](https://fabricmc.net/use/) pour ta version de Minecraft.
-2. Mets **Fabric API** et `1-slot-survival-fabric-*.jar` dans le dossier `mods/`
-   (du client en solo, ou du serveur en multijoueur).
-3. Lance le jeu : le système est actif dès l'entrée dans le monde.
+**Fabric**
+1. Install [Fabric Loader](https://fabricmc.net/use/) for your Minecraft version.
+2. Put **Fabric API** and the matching `1-slot-survival-fabric-*.jar` in the `mods/` folder (client for singleplayer, server for multiplayer).
+3. Start the game. The system is active as soon as you enter the world.
 
-Seul le serveur (ou le solo) a besoin du mod : les joueurs n'ont rien à installer côté client.
+Only the server (or singleplayer) needs the mod. Install it on clients too if you want messages in each player's language (see [Languages](#languages)).
 
-### Plugin Paper
-1. Mets `1-slot-survival-paper-*.jar` dans le dossier `plugins/` du serveur.
-2. Redémarre le serveur (pas de `/reload`).
-3. Le réglage se trouve dans `plugins/SlotSurvival/config.yml`.
+**Paper**
+1. Put `1-slot-survival-paper-*.jar` in the `plugins/` folder.
+2. Restart the server (do not use `/reload`).
+3. Settings are in `plugins/SlotSurvival/config.yml`.
 
-## Langues
+## Commands
 
-Les messages du mod Fabric (chat, barre d'action, nom et description de la barrière) sont **traduits dans 51 langues**
-(67 variantes régionales). Le texte s'affiche dans la langue choisie dans les options de Minecraft.
+The command is the same on both platforms: **`/slotsurvival`**.
+
+| Command | Effect |
+|---------|--------|
+| `/slotsurvival enable` | Enable the system |
+| `/slotsurvival pause` | Pause the system |
+| `/slotsurvival offhand on` | Also lock the offhand |
+| `/slotsurvival offhand off` | Free the offhand (default) |
+| `/slotsurvival status` | Show the state and how many lock barriers are in your inventory |
+| `/slotsurvival uninstall` | Disable the system and remove every barrier, before deleting the mod/plugin |
+
+**Who can use it**
+- **Paper**: permission `slotsurvival.admin` (operators by default). Alias: `/slotsurv`, `/1slot`.
+- **Fabric**: operators only (the command runs the mod's functions, which require the same permission as `/function`).
+  In singleplayer, create the world with **cheats enabled** or open it to LAN with cheats on.
+
+**Exempting a player**
 
 | | |
 |---|---|
-| Europe de l'Ouest | anglais (US, GB, AU, CA, NZ), français (FR, CA), espagnol (ES, MX, AR, CL, EC, UY, VE), allemand (DE, AT, CH), italien, portugais (PT, BR), néerlandais (NL, BE), catalan, galicien, basque |
-| Europe du Nord | suédois, norvégien, danois, finnois, islandais, estonien, letton, lituanien |
-| Europe centrale et de l'Est | polonais, tchèque, slovaque, slovène, croate, bosniaque, serbe, macédonien, bulgare, roumain, hongrois, russe, ukrainien, biélorusse, albanais, grec |
-| Moyen-Orient et Asie | turc, hébreu, arabe, persan, hindi, bengali, thaï, vietnamien, indonésien, malais, filipino, japonais, coréen, chinois (simplifié, traditionnel, Hong Kong) |
-| Autre | afrikaans |
+| Paper | give them the permission `slotsurvival.exempt` (their barriers are removed automatically) |
+| Fabric | `/tag <player> add sl_exempt`, then `/clear <player> minecraft:barrier[minecraft:custom_data~{slot_lock:1b}]` to remove existing barriers. Undo with `/tag <player> remove sl_exempt` |
 
-**Important :** la traduction se fait **côté joueur**. Elle fonctionne si le mod est installé chez le joueur
-(solo, ou serveur où les joueurs ont aussi le mod). Un joueur sans le mod voit les messages en **anglais** (langue de repli).
+Paper also has `/slotsurvival selftest`, a diagnostic that prints `PASS`/`FAIL` for each API the plugin uses.
 
-Ajouter ou corriger une langue : copier `fabric/src/assets/slot_survival/lang/en_us.json` vers `<code_langue>.json`
-(par exemple `ga_ie.json`), traduire les valeurs (garder le `%s` de `slot_survival.msg.status`), puis ouvrir une Pull Request.
-Le script `ci/check_lang.py` vérifie les fichiers à chaque push.
-
-## Commandes
-
-### Plugin Paper : `/slotsurvival`
-
-Alias : `/slotsurv`, `/1slot`. Permission : `slotsurvival.admin` (opérateurs par défaut).
-
-| Commande | Effet |
-|----------|-------|
-| `/slotsurvival enable` | Active le système |
-| `/slotsurvival pause` | Met en pause et retire les barrières des joueurs connectés |
-| `/slotsurvival offhand on` | Bloque aussi la main secondaire |
-| `/slotsurvival offhand off` | Libère la main secondaire (défaut) |
-| `/slotsurvival status` | Affiche l'état du système et le nombre de barrières dans ton inventaire |
-| `/slotsurvival uninstall` | Désactive le système et retire toutes les barrières, avant de supprimer le plugin |
-| `/slotsurvival selftest` | Diagnostic : vérifie que les API utilisées fonctionnent sur ton serveur (affiche `PASS`/`FAIL`) |
-
-| Permission | Effet | Défaut |
-|------------|-------|--------|
-| `slotsurvival.admin` | Utiliser `/slotsurvival` | op |
-| `slotsurvival.exempt` | Exempter un joueur du blocage (ses barrières sont retirées) | personne |
-
-Configuration (`config.yml`), modifiée aussi par les commandes ci-dessus :
+**Paper configuration** (`config.yml`, also changed by the commands above):
 
 ```yaml
-enabled: true         # système actif
-block-offhand: false  # bloquer la main secondaire
+enabled: true         # system active
+block-offhand: false  # also lock the offhand
 ```
 
-### Mod Fabric : fonctions `slot_lock`
+## How it works
 
-Toutes les commandes demandent d'être **opérateur** (niveau 2).
+- **Free slot**: the first hotbar slot. The other 8 hotbar slots and the 27 main inventory slots are locked.
+- **Safe ejection**: an item found in a locked slot is dropped on the ground with a short pickup delay (2.5 s).
+  If the drop fails, the item stays with the player. Nothing is ever deleted.
+- **Checks**: on every inventory change, plus a safety sweep every 0.5 s.
+- **Barriers**: they cannot be dropped, placed as blocks, or kept after death. A barrier lying on the ground is removed.
+- **Armor**: not affected, it works normally.
+- **Offhand**: free by default, lockable with `offhand on`.
+- **Creative mode**: the lock applies too. **Spectator mode**: ignored.
+- **New players** get an explanation message the first time they join.
 
-| Commande | Effet |
-|----------|-------|
-| `/function slot_lock:admin/enable` | Active le système |
-| `/function slot_lock:admin/pause` | Met en pause (les barrières déjà présentes restent) |
-| `/function slot_lock:admin/offhand_on` | Bloque aussi la main secondaire |
-| `/function slot_lock:admin/offhand_off` | Libère la main secondaire (défaut) |
-| `/function slot_lock:admin/status` | Compte les barrières dans ton inventaire (35 attendues, 36 avec la main secondaire) |
-| `/function slot_lock:admin/uninstall` | Désactive le système et retire toutes les barrières, avant de supprimer le mod |
+### Fabric vs Paper
 
-Exempter un joueur :
-
-```mcfunction
-/tag <joueur> add sl_exempt
-/clear <joueur> minecraft:barrier[minecraft:custom_data~{slot_lock:1b}]
-```
-
-La deuxième commande retire les barrières qu'il avait déjà. Pour annuler : `/tag <joueur> remove sl_exempt`.
-
-## Fonctionnement et règles
-
-- **Slot libre** : le premier slot de la barre rapide. Les 8 autres de la barre et les 27 de l'inventaire sont bloqués.
-- **Éjection sûre** : un objet dans un slot bloqué est déposé au sol avec un petit délai de ramassage
-  (2,5 s). Si l'éjection échoue, l'objet reste chez le joueur.
-- **Vérification** : à chaque changement d'inventaire, et toutes les 0,5 s par sécurité.
-- **Barrières** : elles ne peuvent pas être jetées, posées (ni en bloc) ni gardées après la mort.
-  Une barrière tombée au sol est supprimée. Les objets des joueurs ne sont jamais supprimés.
-- **Armures** : non concernées, elles se portent normalement.
-- **Main secondaire** : libre par défaut, bloquable avec `offhand on`.
-- **Créatif** : le blocage s'applique aussi. **Spectateur** : ignoré.
-- **Nouveaux joueurs** : un message d'explication leur est envoyé à leur première connexion.
-
-### Différences entre les deux versions
-
-| | Mod Fabric | Plugin Paper |
+| | Fabric mod | Paper plugin |
 |---|---|---|
-| Clic sur une barrière | Détecté puis corrigé en moins d'une demi-seconde | **Bloqué directement** |
-| `pause` | Les barrières restent dans les inventaires | Les barrières sont retirées automatiquement |
-| Joueur exempté | Barrières à retirer avec `/clear` | Retirées automatiquement |
-| Réglages | Scoreboard du monde | `config.yml` |
+| Click on a barrier | Detected and fixed within half a second | **Blocked immediately** |
+| `pause` | Existing barriers stay in inventories | Barriers are removed automatically |
+| Exempted player | Remove barriers with `/clear` | Removed automatically |
+| Settings | World scoreboard | `config.yml` |
+| Translation | On the player's side (needs the mod on the client) | On the server (works with any client) |
 
-## Tester rapidement
+## Languages
 
-Avec le mod Fabric (en opérateur) :
+Messages (chat, action bar, barrier name and lore) are translated into **51 languages (67 regional variants)**.
+The text follows the language selected in the Minecraft options. English is the default.
 
-| Commande | Résultat attendu |
-|----------|------------------|
-| `/function slot_lock:test/slot0` | 16 émeraudes dans le slot 1 : elles **restent** |
-| `/function slot_lock:test/diamond` | Des diamants dans un slot bloqué : ils sont **éjectés** et la barrière revient |
-| `/function slot_lock:test/many` | Plusieurs objets dans plusieurs slots bloqués : tous éjectés |
+| | |
+|---|---|
+| Western Europe | English (US, GB, AU, CA, NZ), French (FR, CA), Spanish (ES, MX, AR, CL, EC, UY, VE), German (DE, AT, CH), Italian, Portuguese (PT, BR), Dutch (NL, BE), Catalan, Galician, Basque |
+| Northern Europe | Swedish, Norwegian, Danish, Finnish, Icelandic, Estonian, Latvian, Lithuanian |
+| Central and Eastern Europe | Polish, Czech, Slovak, Slovenian, Croatian, Bosnian, Serbian, Macedonian, Bulgarian, Romanian, Hungarian, Russian, Ukrainian, Belarusian, Albanian, Greek |
+| Middle East and Asia | Turkish, Hebrew, Arabic, Persian, Hindi, Bengali, Thai, Vietnamese, Indonesian, Malay, Filipino, Japanese, Korean, Chinese (Simplified, Traditional, Hong Kong) |
+| Other | Afrikaans |
 
-Sur Paper, la même vérification se fait avec la commande vanilla :
+- **Paper**: translated by the server, per player, with any client.
+- **Fabric**: translated by the client. It works when the mod is installed on the player's side (singleplayer, or a server whose players also have the mod). Players without the mod see **English**.
+
+The translations were written without a professional translator, so rarer languages may contain mistakes.
+To add or fix a language, copy `fabric/common/src/main/resources/assets/slot_survival/lang/en_us.json` to `<language_code>.json`
+(for example `ga_ie.json`), translate the values (keep the `%s` in `slot_survival.msg.status`) and open a pull request.
+`ci/check_lang.py` validates the files on every push. Both the Fabric mod and the Paper plugin use the same files.
+
+## Quick test
+
+On Fabric, as an operator:
+
+| Command | Expected result |
+|---------|-----------------|
+| `/function slot_lock:test/slot0` | 16 emeralds in slot 1: they **stay** |
+| `/function slot_lock:test/diamond` | Diamonds in a locked slot: they are **ejected** and the barrier returns |
+| `/function slot_lock:test/many` | Several items in several locked slots: all ejected |
+
+On Paper, the same check works with the vanilla command:
 
 ```mcfunction
 /item replace entity @s inventory.13 with minecraft:diamond 64
 ```
 
-## Désinstaller proprement
+## Uninstalling cleanly
 
-1. Lance la commande **uninstall** (`/slotsurvival uninstall` ou `/function slot_lock:admin/uninstall`)
-   **pendant que les joueurs sont connectés** : leurs barrières sont retirées.
-2. Supprime ensuite le `.jar`.
+1. Run `/slotsurvival uninstall` **while the players are online**: their barriers are removed.
+2. Then delete the `.jar`.
 
-Un joueur déconnecté pendant l'opération garde ses barrières. Il peut les retirer avec
-`/clear @s minecraft:barrier[minecraft:custom_data~{slot_lock:1b}]` à sa reconnexion
-(sur Paper, elles sont retirées automatiquement s'il se reconnecte alors que le système est désactivé).
+A player who was offline keeps their barriers. They can remove them with
+`/clear @s minecraft:barrier[minecraft:custom_data~{slot_lock:1b}]` when they come back
+(on Paper, barriers are removed automatically when a player joins while the system is disabled).
 
-## Dépannage
+## Troubleshooting
 
-**Les commandes ne répondent pas ?** Vérifie d'abord ces points :
+| Problem | Fix |
+|---------|-----|
+| `/slotsurvival` does nothing or is unknown | You are not an operator (`/op <name>` from the server console), or on Fabric singleplayer cheats are off. |
+| The Fabric mod does not load | Check that **Fabric API** is installed, that you use the jar matching your version (1.21.11 or 26.x) and the right Java (21 or 25). |
+| The Paper plugin does not load | Check the Java version (21 for 1.21.11, 25 for 26.x) and the server log for `SlotSurvival`. |
+| A player is not locked | They may be exempted, in spectator mode, or the system is paused. |
+| Barriers remain after `pause` (Fabric) | Expected: use `uninstall` or `/clear`. |
+| Messages are in English | On Fabric, the mod must also be installed on the player's client. |
 
-1. **Tu es opérateur ?** Paper : `/op <pseudo>` depuis la console. Fabric : les `/function` demandent le niveau 2.
-2. **Fabric en solo** : crée le monde avec **« Autoriser les commandes : oui »** (ou « Ouvrir au réseau local » avec les triches activées). Sans ça, `/function` n'existe pas.
-3. **Fabric n'a pas de commande `/slotsurvival`** : ses commandes sont les `/function slot_lock:admin/...` du tableau ci-dessus. `/slotsurvival` n'existe que sur **Paper**.
-4. **Paper** : tape `/slotsurvival` seul, il affiche l'aide et l'état. Puis `/slotsurvival selftest` et envoie-moi les lignes `PASS`/`FAIL` en cas de problème.
-5. Regarde les logs au démarrage (`logs/latest.log`) : cherche `SlotSurvival` (Paper) ou `slot_survival` (Fabric).
-
-
-| Problème | Solution |
-|----------|----------|
-| Le mod Fabric ne se charge pas | Vérifie que **Fabric API** est dans `mods/` et que ta version de Minecraft est ≥ 1.21.11. |
-| `Unknown function slot_lock:…` | Le mod n'est pas chargé : regarde les logs de démarrage. |
-| Le plugin Paper ne se charge pas | Vérifie la version de Java (21 pour 1.21.11, 25 pour 26.x) et les logs du serveur. |
-| Un joueur n'est pas bloqué | Il est peut-être exempté (tag `sl_exempt` / permission `slotsurvival.exempt`), en spectateur, ou le système est en pause. |
-| Les barrières restent après `pause` (Fabric) | Normal : utilise `uninstall` ou `/clear`. |
-
-## Pour les développeurs
+## For developers
 
 ```
-fabric/src/            mod Fabric : fabric.mod.json + data/ (fonctions et advancement chargés par Fabric API)
-paper/                 plugin Paper : projet Maven (Java 21, API Paper 1.21.11, sans NMS)
-.github/workflows/     compilation des deux jars + création de la release sur tag v*
+fabric/common/src/main/java/        mod entry point and the /slotsurvival command
+fabric/common/src/main/resources/   data/ (functions, advancement), assets/ (translations), fabric.mod.json
+fabric/mc-1.21.11/  fabric/mc-26/   two Gradle builds sharing the code above (Loom, Mojang mappings)
+paper/                              Paper plugin (Maven, Java 21, Paper API 1.21.11, no NMS)
+ci/                                 translation checks and server-test helpers
+.github/workflows/build.yml         builds, runs real-server tests, publishes the release on a v* tag
 ```
 
-- **Fabric** : le mod embarque sa logique sous forme de données. Aucun code dépendant d'une version de
-  Minecraft, donc un seul jar pour 1.21.11 → 26.x. Format des composants d'objets de 1.21.5+
-  (SNBT, `tooltip_display`) ; la main secondaire est lue dans `equipment.offhand`.
-- **Paper** : compilé contre l'API la plus ancienne supportée (1.21.11), donc compatible avec les versions suivantes.
-
-Compiler soi-même :
+Build it yourself:
 
 ```bash
-# Fabric
-(cd fabric/src && zip -r ../../1-slot-survival-fabric.jar .)
+# Fabric (Gradle, JDK 21 for 1.21.11 and JDK 25 for 26.x)
+gradle -p fabric/mc-1.21.11 build
+gradle -p fabric/mc-26 build
 
-# Paper (Java 21 + Maven)
-mvn -f paper/pom.xml package        # jar dans paper/target/
+# Paper (Maven, JDK 21)
+mvn -f paper/pom.xml package
 ```
 
-Publier une version : modifier le numéro de version (`fabric/src/fabric.mod.json` et `paper/pom.xml`),
-puis pousser un tag :
+Release a version: bump `mod_version` in both `gradle.properties` files and `<version>` in `paper/pom.xml`, then push a tag:
 
 ```bash
-git tag v2.0.1 && git push origin v2.0.1
+git tag v3.0.1 && git push origin v3.0.1
 ```
-
-GitHub Actions compile les jars et crée la release.
